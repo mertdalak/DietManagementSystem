@@ -99,20 +99,29 @@ Swagger arayüzü şu adreste otomatik olarak açılır: http://localhost:5000/s
 
 •	Success (command handlers):
 •	{ "isSuccess": true, "message": "..." }
+
 •	Not Found:
 •	404 with message (e.g., "Diet plan with ID ... not found")
+
 •	Forbidden:
 •	403 with message ("You don't have permission to ...")
+
 •	Unauthorized:
 •	401 with message ("Invalid user authentication")
+
 •	Bad Request:
 •	400 with message (validation errors or domain rules)
 
+
 # Detaylar
 •	Loglama: Serilog "/diet-management-*.txt" şeklinde loglama yapar.
+
 •	Validation: FluentValidation, pipeline behavior aracılığıyla entegre edilmiştir. Doğrulama mesajları, middleware’iniz tarafından 400 hata olarak döndürülür.
+
 •	Roller: Program.cs başlangıçta rolleri tanımlar. Kullanıcıları Auth endpointleri üzerinden oluşturmalı ve kayıt sırasında rolleri atamalısınız.
+
 •	Filtreli Silme: Birçok entity IsDeleted/DeletedAt değerlerini kullanır böylece kayıtlar gerçekten silinmez kullanılmaz olur; sorgular silinmiş kayıtları filtreler.
+
   
 
   
