@@ -20,8 +20,7 @@ Swagger arayüzü şu adreste otomatik olarak açılır: http://localhost:5000/s
 
 # Database şema 
 
-# Entities (key fields only)
-•	User (Identity):
+# User (Identity):
 •	Id (PK, Guid), FullName, Email, Role (enum), Identity fields...
 •	1-to-1 with Dietitian (User has DietitianProfile)
 # Dietitian:
