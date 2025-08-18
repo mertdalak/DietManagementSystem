@@ -22,24 +22,37 @@ Swagger arayüzü şu adreste otomatik olarak açılır: http://localhost:5000/s
 
 # User (Identity):
 •	Id (PK, Guid), FullName, Email, Role (enum), Identity fields...
+
 •	1-to-1 with Dietitian (User has DietitianProfile)
+
 # Dietitian:
 •	Id (PK), FullName, Specialization, UserId (unique), CreatedAt, UpdatedAt, IsDeleted, DeletedAt
+
 •	Relations: 1-to-1 with User; 1-to-many Clients; 1-to-many DietPlans; 1-to-many ClientProgress
+
 # Client:
 •	Id (PK), FullName, InitialWeight, CurrentWeight?, DietitianId (FK), audit fields
+
 •	Relations: many-to-1 Dietitian; 1-to-many DietPlans; 1-to-many ClientProgress
+
 # DietPlan:
 •	Id (PK), Title, StartDate, EndDate, InitialWeight, ClientId (FK), DietitianId (FK), audit fields
+
 •	Relations: many-to-1 Client; many-to-1 Dietitian; 1-to-many Meals
+
 # Meal:
 •	Id (PK), Title, StartTime, EndTime, Contents, DietPlanId (FK), audit fields
+
 •	Relations: many-to-1 DietPlan
+
 # ClientProgress:
 •	Id (PK), RecordDate, Weight, BodyFatPercentage?, MuscleMass?, Notes?, ClientId (FK), DietitianId (FK), audit fields
+
 •	Relations: many-to-1 Client; many-to-1 Dietitian
+
 # RefreshToken:
 •	Id (PK), Token, ExpiryDate, IsUsed, IsRevoked, UserId (FK), audit fields
+
 
 # Endpoint documentation with request/response examples
 # Authentication
