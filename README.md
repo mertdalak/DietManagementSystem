@@ -65,21 +65,34 @@ Swagger arayüzü şu adreste otomatik olarak açılır: http://localhost:5000/s
 # Dietitian 
 •	POST /api/dietitian (Admin)
   •	Body:
+  
   { "fullName": "Mert Dalak", "specialization": "Personal Trainer", "userId": "GUID-OF-USER" }
+  
   •	200:
+  
   { "isSuccess": true, "message": "Dietitian created successfully" }
   
 •	PUT /api/dietitian/{id} (Admin)
   •	Body:
+  
   { "fullName": "Mert D.", "specialization": "PT", "userId": "GUID-OF-USER" }
+  
   •	200:
+  
   { "isSuccess": true, "message": "Dietitian updated successfully" }
+  
 •	DELETE /api/dietitian/{id} (Admin)
+
   •	200:
+  
   { "isSuccess": true, "message": "Dietitian deleted successfully" }
+  
 •	GET /api/dietitian/{id} (Admin or owner dietitian)
+
   •	200:
+  
   { "id": "GUID", "fullName": "Mert D.", "specialization": "PT", "userId": "GUID", "isDeleted": false }
+  
 
 
 # Yaygın Responselar ve Hatalar
