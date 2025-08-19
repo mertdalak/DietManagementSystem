@@ -1,0 +1,76 @@
+﻿using MediatR;
+using Microsoft.EntityFrameworkCore;
+using DietManagementSystemSHFT.Data;
+using DietManagementSystemSHFT.Entities;
+using DietManagementSystemSHFT.API.Models.ResponseModels;
+using DietManagementSystemSHFT.API.CQRS.Commands.MealCommands;
+
+namespace DietManagementSystemSHFT.API.CQRS.Handlers.MealHandlers
+{
+    public class CreateMealCommandHandler : IRequestHandler<CreateMealCommand, BaseResponseModel>
+    {
+        private readonly DietManagementDbContext _dbContext;
+
+        public CreateMealCommandHandler(DietManagementDbContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
+
+        public async Task<BaseResponseModel> Handle(CreateMealCommand request, CancellationToken cancellationToken)
+        {
+            // Check if diet plan exists
+            var dietPlan = await _dbContext.DietPlans
+                .Where(dp => dp.Id == request.DietPlanId && !dp.IsDeleted)
+                .FirstOrDefaultAsync(cancellationToken);
+                
+            if (dietPlan == null)
+            {
+                return new BaseResponseModel
+                {
+                    IsSuccess = false,
+                    Message = "Diet plan not found"
+                };
+            }
+
+            // Validate time range
+            if (request.EndTime <= request.StartTime)
+            {
+                return new BaseResponseModel
+                {
+                    IsSuccess = false,
+                    Message = "End time must be after start time"
+                };
+            }
+
+            // Validate that the meal times are within the diet plan's date range
+            var mealDate = request.StartTime.Date;
+            if (mealDate < dietPlan.StartDate.Date || mealDate > dietPlan.EndDate.Date)
+            {
+                return new BaseResponseModel
+                {
+                    IsSuccess = false,
+                    Message = "Meal date must be within diet plan's date range"
+                };
+            }
+
+            var meal = new Meal
+            {
+                Title = request.Title,
+                StartTime = request.StartTime,
+                EndTime = request.EndTime,
+                Contents = request.Contents,
+                DietPlanId = request.DietPlanId,
+                CreatedAt = DateTime.UtcNow
+            };
+
+            await _dbContext.Meals.AddAsync(meal, cancellationToken);
+            await _dbContext.SaveChangesAsync(cancellationToken);
+
+            return new BaseResponseModel
+            {
+                IsSuccess = true,
+                Message = "Meal created successfully"
+            };
+        }
+    }
+}

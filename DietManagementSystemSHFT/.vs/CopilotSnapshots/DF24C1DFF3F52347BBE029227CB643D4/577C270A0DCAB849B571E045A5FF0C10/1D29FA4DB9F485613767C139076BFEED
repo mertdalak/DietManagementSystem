@@ -1,0 +1,124 @@
+﻿using MediatR;
+using Microsoft.EntityFrameworkCore;
+using DietManagementSystemSHFT.Data;
+using DietManagementSystemSHFT.API.Models.ResponseModels;
+using DietManagementSystemSHFT.API.CQRS.Commands.ClientProgressCommands;
+
+namespace DietManagementSystemSHFT.API.CQRS.Handlers.ClientProgressHandlers
+{
+    public class UpdateClientProgressCommandHandler : IRequestHandler<UpdateClientProgressCommand, BaseResponseModel>
+    {
+        private readonly DietManagementDbContext _dbContext;
+
+        public UpdateClientProgressCommandHandler(DietManagementDbContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
+
+        public async Task<BaseResponseModel> Handle(UpdateClientProgressCommand request, CancellationToken cancellationToken)
+        {
+            var clientProgress = await _dbContext.ClientProgressRecords
+                .Where(cp => cp.Id == request.Id && !cp.IsDeleted)
+                .FirstOrDefaultAsync(cancellationToken);
+                
+            if (clientProgress == null)
+            {
+                return new BaseResponseModel
+                {
+                    IsSuccess = false,
+                    Message = "Client progress record not found"
+                };
+            }
+
+            var client = await _dbContext.Clients
+                .Where(c => c.Id == request.ClientId && !c.IsDeleted)
+                .FirstOrDefaultAsync(cancellationToken);
+                
+            if (client == null)
+            {
+                return new BaseResponseModel
+                {
+                    IsSuccess = false,
+                    Message = "Client not found"
+                };
+            }
+
+            var dietitian = await _dbContext.Dietitians
+                .Where(d => d.Id == request.DietitianId && !d.IsDeleted)
+                .FirstOrDefaultAsync(cancellationToken);
+                
+            if (dietitian == null)
+            {
+                return new BaseResponseModel
+                {
+                    IsSuccess = false,
+                    Message = "Dietitian not found"
+                };
+            }
+
+            if (client.DietitianId != request.DietitianId)
+            {
+                return new BaseResponseModel
+                {
+                    IsSuccess = false,
+                    Message = "Client does not belong to this dietitian"
+                };
+            }
+
+            if (request.Weight <= 0)
+            {
+                return new BaseResponseModel
+                {
+                    IsSuccess = false,
+                    Message = "Weight must be a positive value"
+                };
+            }
+
+            if (request.BodyFatPercentage.HasValue && (request.BodyFatPercentage < 0 || request.BodyFatPercentage > 100))
+            {
+                return new BaseResponseModel
+                {
+                    IsSuccess = false,
+                    Message = "Body fat percentage must be between 0 and 100"
+                };
+            }
+
+            if (request.MuscleMass.HasValue && request.MuscleMass <= 0)
+            {
+                return new BaseResponseModel
+                {
+                    IsSuccess = false,
+                    Message = "Muscle mass must be a positive value"
+                };
+            }
+
+            clientProgress.RecordDate = request.RecordDate;
+            clientProgress.Weight = request.Weight;
+            clientProgress.BodyFatPercentage = request.BodyFatPercentage;
+            clientProgress.MuscleMass = request.MuscleMass;
+            clientProgress.Notes = request.Notes;
+            clientProgress.ClientId = request.ClientId;
+            clientProgress.DietitianId = request.DietitianId;
+            clientProgress.UpdatedAt = DateTime.UtcNow;
+
+            var latestProgress = await _dbContext.ClientProgressRecords
+                .Where(cp => cp.ClientId == request.ClientId && !cp.IsDeleted)
+                .OrderByDescending(cp => cp.RecordDate)
+                .FirstOrDefaultAsync(cancellationToken);
+
+            if (latestProgress != null && latestProgress.Id == request.Id)
+            {
+                client.CurrentWeight = request.Weight;
+                client.UpdatedAt = DateTime.UtcNow;
+            }
+
+            await _dbContext.SaveChangesAsync(cancellationToken);
+
+            return new BaseResponseModel
+            {
+                IsSuccess = true,
+                Message = "Client progress record updated successfully"
+            };
+        }
+    }
+}

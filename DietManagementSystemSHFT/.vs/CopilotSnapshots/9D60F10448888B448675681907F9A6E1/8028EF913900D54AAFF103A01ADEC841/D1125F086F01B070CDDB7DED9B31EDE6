@@ -1,0 +1,14 @@
+﻿using FluentValidation;
+using DietManagementSystemSHFT.API.CQRS.Queries.DietPlanQueries;
+
+namespace DietManagementSystemSHFT.CQRS.Validators
+{
+    public class GetDietPlansByClientIdQueryValidator : AbstractValidator<GetDietPlansByClientIdQuery>
+    {
+        public GetDietPlansByClientIdQueryValidator()
+        {
+            RuleFor(x => x.ClientId)
+                .NotEmpty().WithMessage("Client ID is required");
+        }
+    }
+}

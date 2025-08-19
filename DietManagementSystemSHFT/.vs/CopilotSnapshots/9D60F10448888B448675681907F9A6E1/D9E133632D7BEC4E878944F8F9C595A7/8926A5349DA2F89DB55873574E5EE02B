@@ -1,0 +1,34 @@
+﻿using FluentValidation;
+using FluentValidation.Results;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Filters;
+using System.Net;
+using DietManagementSystemSHFT.API.Models.ResponseModels;
+
+namespace DietManagementSystemSHFT.Middleware
+{
+    public class ValidateModelAttribute : ActionFilterAttribute
+    {
+        public override void OnActionExecuting(ActionExecutingContext context)
+        {
+            if (!context.ModelState.IsValid)
+            {
+                var errors = context.ModelState
+                    .Where(e => e.Value?.Errors.Count > 0)
+                    .SelectMany(e => e.Value.Errors.Select(er => $"{e.Key}: {er.ErrorMessage}"))
+                    .ToList();
+
+                var response = new BaseResponseModel
+                {
+                    IsSuccess = false,
+                    Message = string.Join(", ", errors)
+                };
+
+                context.Result = new BadRequestObjectResult(response);
+                return;
+            }
+
+            base.OnActionExecuting(context);
+        }
+    }
+}

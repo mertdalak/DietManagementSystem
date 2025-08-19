@@ -1,0 +1,39 @@
+﻿using MediatR;
+using Microsoft.EntityFrameworkCore;
+using DietManagementSystemSHFT.Data;
+using DietManagementSystemSHFT.Models.ResponseModels;
+using System.Linq;
+using DietManagementSystemSHFT.API.CQRS.Queries.DietitanQueries;
+
+namespace DietManagementSystemSHFT.API.CQRS.Handlers.DietitianHandler
+{
+    public class GetAllDietitiansQueryHandler : IRequestHandler<GetAllDietitiansQuery, List<DietitianResponseModel>>
+    {
+        private readonly DietManagementDbContext _dbContext;
+
+        public GetAllDietitiansQueryHandler(DietManagementDbContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
+
+        public async Task<List<DietitianResponseModel>> Handle(GetAllDietitiansQuery request, CancellationToken cancellationToken)
+        {
+            var dietitians = await _dbContext.Dietitians
+                .Where(d => !d.IsDeleted)
+                .Select(d => new DietitianResponseModel
+                {
+                    Id = d.Id,
+                    FullName = d.FullName,
+                    Specialization = d.Specialization,
+                    UserId = d.UserId,
+                    CreatedAt = d.CreatedAt,
+                    UpdatedAt = d.UpdatedAt,
+                    IsDeleted = d.IsDeleted,
+                    DeletedAt = d.DeletedAt
+                })
+                .ToListAsync(cancellationToken);
+
+            return dietitians;
+        }
+    }
+}

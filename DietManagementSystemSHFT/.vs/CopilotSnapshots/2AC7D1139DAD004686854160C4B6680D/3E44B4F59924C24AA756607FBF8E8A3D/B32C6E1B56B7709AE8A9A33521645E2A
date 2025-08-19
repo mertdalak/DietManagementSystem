@@ -1,0 +1,49 @@
+﻿using DietManagementSystemSHFT.Entities;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+
+namespace DietManagementSystemSHFT.Data
+{
+    public class DietManagementDbContext : IdentityDbContext<User, Microsoft.AspNetCore.Identity.IdentityRole<Guid>, Guid>
+    {
+        public DietManagementDbContext(DbContextOptions<DietManagementDbContext> options) : base(options) { }
+
+        public DbSet<Dietitian> Dietitians { get; set; }
+        public DbSet<Client> Clients { get; set; }
+        public DbSet<DietPlan> DietPlans { get; set; }
+        public DbSet<Meal> Meals { get; set; }
+        public DbSet<ClientProgress> ClientProgressRecords { get; set; }
+        public DbSet<RefreshToken> RefreshTokens { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            
+            // Configure relationships
+            modelBuilder.Entity<RefreshToken>()
+                .HasOne(r => r.User)
+                .WithMany()
+                .HasForeignKey(r => r.UserId)
+                .OnDelete(DeleteBehavior.Cascade);
+                
+            // Fix cascade delete cycles
+            modelBuilder.Entity<ClientProgress>()
+                .HasOne(cp => cp.Dietitian)
+                .WithMany(d => d.ProgressRecords)
+                .HasForeignKey(cp => cp.DietitianId)
+                .OnDelete(DeleteBehavior.NoAction);
+                
+            modelBuilder.Entity<ClientProgress>()
+                .HasOne(cp => cp.Client)
+                .WithMany(c => c.ProgressRecords)
+                .HasForeignKey(cp => cp.ClientId)
+                .OnDelete(DeleteBehavior.NoAction);
+                
+            modelBuilder.Entity<DietPlan>()
+                .HasOne(dp => dp.Dietitian)
+                .WithMany(d => d.DietPlans)
+                .HasForeignKey(dp => dp.DietitianId)
+                .OnDelete(DeleteBehavior.NoAction);
+        }
+    }
+}

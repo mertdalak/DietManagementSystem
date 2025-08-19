@@ -1,0 +1,6 @@
+@DietManagementSystemSHFT_HostAddress = http://localhost:5283
+
+GET {{DietManagementSystemSHFT_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

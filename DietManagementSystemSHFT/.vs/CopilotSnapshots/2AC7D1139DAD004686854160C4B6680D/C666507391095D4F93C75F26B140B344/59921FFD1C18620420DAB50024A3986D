@@ -1,0 +1,18 @@
+﻿{
+  "ConnectionStrings": {
+    "DefaultConnection": "Server=MERT\\SQLEXPRESS;Database=DietManagementSystem;Trusted_Connection=True;TrustServerCertificate=True;MultipleActiveResultSets=true"
+  },
+  "JwtSettings": {
+    "Key": "DietManagementSystemDevKey12345678901234567890",
+    "Issuer": "DietManagementSystemAPI",
+    "Audience": "DietManagementSystemClients",
+    "AccessTokenExpirationMinutes": 60,
+    "RefreshTokenExpirationDays": 7
+  },
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft.AspNetCore": "Warning"
+    }
+  }
+}

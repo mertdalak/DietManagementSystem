@@ -1,0 +1,265 @@
+﻿using MediatR;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
+using DietManagementSystemSHFT.Models.RequestModels;
+using DietManagementSystem.Data.Enums;
+using DietManagementSystemSHFT.API.CQRS.Commands.ClientProgressCommands;
+using DietManagementSystemSHFT.API.CQRS.Queries.ClientProgressQueries;
+using DietManagementSystemSHFT.API.CQRS.Queries.ClientQueries;
+using DietManagementSystemSHFT.API.CQRS.Queries.DietitanQueries;
+
+namespace DietManagementSystemSHFT.Controllers
+{
+    [ApiController]
+    [Route("api/[controller]")]
+    [Authorize]
+    public class ClientProgressController : ControllerBase
+    {
+        private readonly IMediator _mediator;
+
+        public ClientProgressController(IMediator mediator)
+        {
+            _mediator = mediator;
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Admin,Dietitian")]
+        public async Task<IActionResult> Create([FromBody] ClientProgressRequestModel request)
+        {
+            // Check if user is admin or the dietitian responsible for this client
+            var userRole = User.FindFirstValue("role");
+            var userIdClaim = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            
+            if (string.IsNullOrEmpty(userIdClaim) || !Guid.TryParse(userIdClaim, out var userId))
+            {
+                return Unauthorized();
+            }
+
+            // Get the client to check permissions
+            var client = await _mediator.Send(new GetClientByIdQuery(request.ClientId));
+            if (client == null)
+            {
+                return NotFound("Client not found");
+            }
+
+            if (userRole == Role.Dietitian.ToString())
+            {
+                // Get the dietitian's ID from their user ID
+                var dietitians = await _mediator.Send(new GetAllDietitiansQuery());
+                var dietitian = dietitians.FirstOrDefault(d => d.UserId == userId);
+                
+                if (dietitian == null || dietitian.Id != client.DietitianId)
+                {
+                    return Forbid();
+                }
+
+                // Override the dietitian ID to ensure it's correct
+                request.DietitianId = dietitian.Id;
+            }
+
+            var command = CreateClientProgressCommand.FromRequest(request);
+            var result = await _mediator.Send(command);
+
+            if (!result.IsSuccess)
+                return BadRequest(result);
+
+            return Ok(result);
+        }
+
+        [HttpPut("{id}")]
+        [Authorize(Roles = "Admin,Dietitian")]
+        public async Task<IActionResult> Update(Guid id, [FromBody] ClientProgressRequestModel request)
+        {
+            // Check if user is admin or the dietitian responsible for this client
+            var userRole = User.FindFirstValue("role");
+            var userIdClaim = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            
+            if (string.IsNullOrEmpty(userIdClaim) || !Guid.TryParse(userIdClaim, out var userId))
+            {
+                return Unauthorized();
+            }
+
+            // Get the progress record to check permissions
+            var progress = await _mediator.Send(new GetClientProgressByIdQuery(id));
+            if (progress == null)
+            {
+                return NotFound("Client progress record not found");
+            }
+
+            // Get the client to check permissions
+            var client = await _mediator.Send(new GetClientByIdQuery(request.ClientId));
+            if (client == null)
+            {
+                return NotFound("Client not found");
+            }
+
+            if (userRole == Role.Dietitian.ToString())
+            {
+                // Get the dietitian's ID from their user ID
+                var dietitians = await _mediator.Send(new GetAllDietitiansQuery());
+                var dietitian = dietitians.FirstOrDefault(d => d.UserId == userId);
+                
+                if (dietitian == null || dietitian.Id != client.DietitianId)
+                {
+                    return Forbid();
+                }
+
+                // Override the dietitian ID to ensure it's correct
+                request.DietitianId = dietitian.Id;
+            }
+
+            var command = UpdateClientProgressCommand.FromRequest(id, request);
+            var result = await _mediator.Send(command);
+
+            if (!result.IsSuccess)
+                return BadRequest(result);
+
+            return Ok(result);
+        }
+
+        [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin,Dietitian")]
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            // Check if user is admin or the dietitian responsible for this client progress
+            var userRole = User.FindFirstValue("role");
+            var userIdClaim = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            
+            if (string.IsNullOrEmpty(userIdClaim) || !Guid.TryParse(userIdClaim, out var userId))
+            {
+                return Unauthorized();
+            }
+
+            // Get the progress record to check permissions
+            var progress = await _mediator.Send(new GetClientProgressByIdQuery(id));
+            if (progress == null)
+            {
+                return NotFound("Client progress record not found");
+            }
+
+            if (userRole == Role.Dietitian.ToString())
+            {
+                // Get the dietitian's ID from their user ID
+                var dietitians = await _mediator.Send(new GetAllDietitiansQuery());
+                var dietitian = dietitians.FirstOrDefault(d => d.UserId == userId);
+                
+                if (dietitian == null || dietitian.Id != progress.DietitianId)
+                {
+                    return Forbid();
+                }
+            }
+
+            var command = new DeleteClientProgressCommand(id);
+            var result = await _mediator.Send(command);
+
+            if (!result.IsSuccess)
+                return BadRequest(result);
+
+            return Ok(result);
+        }
+
+        [HttpGet("{id}")]
+        [Authorize(Roles = "Admin,Dietitian")]
+        public async Task<IActionResult> GetById(Guid id)
+        {
+            // Check if user is admin or the dietitian responsible for this client progress
+            var userRole = User.FindFirstValue("role");
+            var userIdClaim = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            
+            if (string.IsNullOrEmpty(userIdClaim) || !Guid.TryParse(userIdClaim, out var userId))
+            {
+                return Unauthorized();
+            }
+
+            // Get the progress record
+            var progress = await _mediator.Send(new GetClientProgressByIdQuery(id));
+            if (progress == null)
+            {
+                return NotFound("Client progress record not found");
+            }
+
+            if (userRole == Role.Dietitian.ToString())
+            {
+                // Get the dietitian's ID from their user ID
+                var dietitians = await _mediator.Send(new GetAllDietitiansQuery());
+                var dietitian = dietitians.FirstOrDefault(d => d.UserId == userId);
+                
+                if (dietitian == null || dietitian.Id != progress.DietitianId)
+                {
+                    return Forbid();
+                }
+            }
+
+            return Ok(progress);
+        }
+
+        [HttpGet]
+        [Authorize(Roles = "Admin,Dietitian")]
+        public async Task<IActionResult> GetAll()
+        {
+            var userRole = User.FindFirstValue("role");
+            var userIdClaim = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            
+            if (string.IsNullOrEmpty(userIdClaim) || !Guid.TryParse(userIdClaim, out var userId))
+            {
+                return Unauthorized();
+            }
+
+            var progresses = await _mediator.Send(new GetAllClientProgressesQuery());
+
+            // If the user is a dietitian, only return progress records for their clients
+            if (userRole == Role.Dietitian.ToString())
+            {
+                // Get the dietitian's ID from their user ID
+                var dietitians = await _mediator.Send(new GetAllDietitiansQuery());
+                var dietitian = dietitians.FirstOrDefault(d => d.UserId == userId);
+                
+                if (dietitian == null)
+                {
+                    return NotFound("No dietitian profile found for this user");
+                }
+
+                progresses = progresses.Where(p => p.DietitianId == dietitian.Id).ToList();
+            }
+
+            return Ok(progresses);
+        }
+
+        [HttpGet("client/{clientId}")]
+        [Authorize(Roles = "Admin,Dietitian")]
+        public async Task<IActionResult> GetByClientId(Guid clientId)
+        {
+            // Check if user is admin or the dietitian responsible for this client
+            var userRole = User.FindFirstValue("role");
+            var userIdClaim = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            
+            if (string.IsNullOrEmpty(userIdClaim) || !Guid.TryParse(userIdClaim, out var userId))
+            {
+                return Unauthorized();
+            }
+
+            // Get the client to check permissions
+            var client = await _mediator.Send(new GetClientByIdQuery(clientId));
+            if (client == null)
+            {
+                return NotFound("Client not found");
+            }
+
+            if (userRole == Role.Dietitian.ToString())
+            {
+                // Get the dietitian's ID from their user ID
+                var dietitians = await _mediator.Send(new GetAllDietitiansQuery());
+                var dietitian = dietitians.FirstOrDefault(d => d.UserId == userId);
+                
+                if (dietitian == null || dietitian.Id != client.DietitianId)
+                {
+                    return Forbid();
+                }
+            }
+
+            var progresses = await _mediator.Send(new GetClientProgressesByClientIdQuery(clientId));
+            return Ok(progresses);
+        }
+    }
+}

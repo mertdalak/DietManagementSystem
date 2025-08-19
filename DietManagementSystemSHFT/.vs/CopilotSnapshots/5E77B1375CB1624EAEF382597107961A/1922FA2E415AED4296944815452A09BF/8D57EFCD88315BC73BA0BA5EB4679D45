@@ -1,0 +1,18 @@
+﻿using DietManagementSystemSHFT.Enums;
+using System.Data;
+
+namespace DietManagementSystemSHFT.Entities
+{
+    public class User : BaseEntity
+    {
+        public string FullName { get; set; } = string.Empty;
+        public string Email { get; set; } = string.Empty;
+        public string PasswordHash { get; set; } = string.Empty;
+
+        // Enum Role
+        public Role Role { get; set; } = Role.Dietitian;
+
+        // Navigation
+        public Dietitian? DietitianProfile { get; set; }
+    }
+}

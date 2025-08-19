@@ -1,0 +1,14 @@
+﻿using FluentValidation;
+using DietManagementSystemSHFT.API.CQRS.Queries.ClientProgressQueries;
+
+namespace DietManagementSystemSHFT.CQRS.Validators
+{
+    public class GetClientProgressesByClientIdQueryValidator : AbstractValidator<GetClientProgressesByClientIdQuery>
+    {
+        public GetClientProgressesByClientIdQueryValidator()
+        {
+            RuleFor(x => x.ClientId)
+                .NotEmpty().WithMessage("Client ID is required");
+        }
+    }
+}

@@ -1,0 +1,14 @@
+﻿using FluentValidation;
+using DietManagementSystemSHFT.API.CQRS.Commands.ClientProgressCommands;
+
+namespace DietManagementSystemSHFT.CQRS.Validators
+{
+    public class DeleteClientProgressCommandValidator : AbstractValidator<DeleteClientProgressCommand>
+    {
+        public DeleteClientProgressCommandValidator()
+        {
+            RuleFor(x => x.Id)
+                .NotEmpty().WithMessage("Client progress ID is required");
+        }
+    }
+}

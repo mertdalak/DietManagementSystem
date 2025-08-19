@@ -1,0 +1,53 @@
+﻿using MediatR;
+using Microsoft.EntityFrameworkCore;
+using DietManagementSystemSHFT.Data;
+using DietManagementSystemSHFT.API.Models.ResponseModels;
+using DietManagementSystemSHFT.API.CQRS.Commands.ClientCommands;
+using DietManagementSystemSHFT.Exceptions;
+
+namespace DietManagementSystemSHFT.API.CQRS.Handlers.ClientHandlers
+{
+    public class UpdateClientCommandHandler : IRequestHandler<UpdateClientCommand, BaseResponseModel>
+    {
+        private readonly DietManagementDbContext _dbContext;
+
+        public UpdateClientCommandHandler(DietManagementDbContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
+
+        public async Task<BaseResponseModel> Handle(UpdateClientCommand request, CancellationToken cancellationToken)
+        {
+            var client = await _dbContext.Clients
+                .FirstOrDefaultAsync(c => c.Id == request.Id && !c.IsDeleted, cancellationToken);
+
+            if (client == null)
+            {
+                throw new NotFoundException($"Client with ID {request.Id} was not found");
+            }
+
+            // Check if dietitian exists
+            var dietitian = await _dbContext.Dietitians
+                .FindAsync(new object[] { request.DietitianId }, cancellationToken);
+                
+            if (dietitian == null)
+            {
+                throw new NotFoundException($"Dietitian with ID {request.DietitianId} was not found");
+            }
+
+            client.FullName = request.FullName;
+            client.InitialWeight = request.InitialWeight;
+            client.CurrentWeight = request.CurrentWeight;
+            client.DietitianId = request.DietitianId;
+            client.UpdatedAt = DateTime.UtcNow;
+
+            await _dbContext.SaveChangesAsync(cancellationToken);
+
+            return new BaseResponseModel
+            {
+                IsSuccess = true,
+                Message = "Client updated successfully"
+            };
+        }
+    }
+}

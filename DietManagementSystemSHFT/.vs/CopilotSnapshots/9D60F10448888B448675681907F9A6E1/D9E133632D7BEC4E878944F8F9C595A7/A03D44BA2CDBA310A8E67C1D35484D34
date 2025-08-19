@@ -1,0 +1,17 @@
+﻿using System.Net;
+
+namespace DietManagementSystemSHFT.Exceptions
+{
+    public abstract class ApplicationException : Exception
+    {
+        public HttpStatusCode StatusCode { get; }
+        public string ErrorCode { get; }
+
+        protected ApplicationException(string message, HttpStatusCode statusCode, string errorCode = "") 
+            : base(message)
+        {
+            StatusCode = statusCode;
+            ErrorCode = errorCode;
+        }
+    }
+}

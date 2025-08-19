@@ -1,0 +1,60 @@
+﻿namespace DietManagementSystemSHFT.Models
+{
+    public class UserModel
+    {
+        public Guid Id { get; set; }
+        public string FullName { get; set; } = string.Empty;
+        public string Email { get; set; } = string.Empty;
+        public string? Role { get; set; } // Enum as string for API
+    }
+
+    public class DietitianModel
+    {
+        public Guid Id { get; set; }
+        public string FullName { get; set; } = string.Empty;
+        public string Specialization { get; set; } = string.Empty;
+        public Guid UserId { get; set; }
+    }
+
+    public class ClientModel
+    {
+        public Guid Id { get; set; }
+        public string FullName { get; set; } = string.Empty;
+        public double InitialWeight { get; set; }
+        public double? CurrentWeight { get; set; }
+        public Guid DietitianId { get; set; }
+    }
+
+    public class DietPlanModel
+    {
+        public Guid Id { get; set; }
+        public string Title { get; set; } = string.Empty;
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
+        public double InitialWeight { get; set; }
+        public Guid ClientId { get; set; }
+        public Guid DietitianId { get; set; }
+    }
+
+    public class MealModel
+    {
+        public Guid Id { get; set; }
+        public string Title { get; set; } = string.Empty;
+        public DateTime StartTime { get; set; }
+        public DateTime EndTime { get; set; }
+        public string Contents { get; set; } = string.Empty;
+        public Guid DietPlanId { get; set; }
+    }
+
+    public class ClientProgressModel
+    {
+        public Guid Id { get; set; }
+        public DateTime RecordDate { get; set; }
+        public double Weight { get; set; }
+        public double? BodyFatPercentage { get; set; }
+        public double? MuscleMass { get; set; }
+        public string? Notes { get; set; }
+        public Guid ClientId { get; set; }
+        public Guid DietitianId { get; set; }
+    }
+}

@@ -1,0 +1,25 @@
+﻿using Microsoft.AspNetCore.Mvc;
+using DietManagementSystemSHFT.Services;
+
+namespace DietManagementSystemSHFT.Controllers
+{
+    [ApiController]
+    [Route("api/[controller]")]
+    public class ErrorDemoController : ControllerBase
+    {
+        private readonly ExceptionHandlingDemoService _demoService;
+        
+        public ErrorDemoController(ExceptionHandlingDemoService demoService)
+        {
+            _demoService = demoService;
+        }
+        
+        [HttpGet("test/{exceptionType}")]
+        public IActionResult TestException(string exceptionType)
+        {
+            _demoService.DemonstrateExceptions(exceptionType);
+            
+            return Ok(new { Message = "No exception was thrown" });
+        }
+    }
+}

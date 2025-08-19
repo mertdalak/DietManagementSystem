@@ -1,0 +1,224 @@
+using MediatR;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
+using DietManagementSystemSHFT.Models.RequestModels;
+using DietManagementSystem.Data.Enums;
+using DietManagementSystemSHFT.API.CQRS.Commands.ClientCommands;
+using DietManagementSystemSHFT.API.CQRS.Queries.ClientQueries;
+using DietManagementSystemSHFT.API.CQRS.Queries.DietitanQueries;
+using DietManagementSystemSHFT.Exceptions;
+using Serilog;
+
+namespace DietManagementSystemSHFT.Controllers
+{
+    [ApiController]
+    [Route("api/[controller]")]
+    [Authorize]
+    public class ClientController : ControllerBase
+    {
+        private readonly IMediator _mediator;
+
+        public ClientController(IMediator mediator)
+        {
+            _mediator = mediator;
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Admin,Dietitian")]
+        public async Task<IActionResult> Create([FromBody] ClientRequestModel request)
+        {
+            Log.Information("Creating a new client");
+            
+            // If dietitian is creating a client, use their ID
+            if (User.FindFirstValue("role") == Role.Dietitian.ToString())
+            {
+                var userIdClaim = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                if (string.IsNullOrEmpty(userIdClaim) || !Guid.TryParse(userIdClaim, out var userId))
+                {
+                    throw new UnauthorizedException("Invalid user authentication");
+                }
+
+                // Get the dietitian's ID from their user ID
+                var dietitians = await _mediator.Send(new GetAllDietitiansQuery());
+                var dietitian = dietitians.FirstOrDefault(d => d.UserId == userId);
+                
+                if (dietitian == null)
+                {
+                    throw new NotFoundException("No dietitian profile found for this user");
+                }
+
+                // Override the dietitian ID in the request
+                request.DietitianId = dietitian.Id;
+            }
+
+            var command = CreateClientCommand.FromRequest(request);
+            var result = await _mediator.Send(command);
+
+            Log.Information("Client created successfully");
+            return Ok(result);
+        }
+
+        [HttpPut("{id}")]
+        [Authorize(Roles = "Admin,Dietitian")]
+        public async Task<IActionResult> Update(Guid id, [FromBody] ClientRequestModel request)
+        {
+            Log.Information("Updating client with ID: {ClientId}", id);
+            
+            // Check if user is admin or the dietitian responsible for this client
+            var userRole = User.FindFirstValue("role");
+            var userIdClaim = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            
+            if (string.IsNullOrEmpty(userIdClaim) || !Guid.TryParse(userIdClaim, out var userId))
+            {
+                throw new UnauthorizedException("Invalid user authentication");
+            }
+
+            // Get the client to check permissions
+            var clientToCheck = await _mediator.Send(new GetClientByIdQuery(id));
+            // Note: GetClientByIdQuery now throws NotFoundException if client not found
+
+            if (userRole == Role.Dietitian.ToString())
+            {
+                // Get the dietitian's ID from their user ID
+                var dietitians = await _mediator.Send(new GetAllDietitiansQuery());
+                var dietitian = dietitians.FirstOrDefault(d => d.UserId == userId);
+                
+                if (dietitian == null)
+                {
+                    throw new NotFoundException("No dietitian profile found for this user");
+                }
+                
+                if (dietitian.Id != clientToCheck.DietitianId)
+                {
+                    throw new ForbiddenException("You don't have permission to update this client");
+                }
+
+                // Override the dietitian ID to ensure it doesn't change
+                request.DietitianId = dietitian.Id;
+            }
+
+            var command = UpdateClientCommand.FromRequest(id, request);
+            var result = await _mediator.Send(command);
+
+            Log.Information("Client updated successfully. Client ID: {ClientId}", id);
+            return Ok(result);
+        }
+
+        [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin,Dietitian")]
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            Log.Information("Deleting client with ID: {ClientId}", id);
+            
+            // Check if user is admin or the dietitian responsible for this client
+            var userRole = User.FindFirstValue("role");
+            var userIdClaim = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            
+            if (string.IsNullOrEmpty(userIdClaim) || !Guid.TryParse(userIdClaim, out var userId))
+            {
+                throw new UnauthorizedException("Invalid user authentication");
+            }
+
+            // Get the client to check permissions
+            var clientToCheck = await _mediator.Send(new GetClientByIdQuery(id));
+            // Note: GetClientByIdQuery now throws NotFoundException if client not found
+
+            if (userRole == Role.Dietitian.ToString())
+            {
+                // Get the dietitian's ID from their user ID
+                var dietitians = await _mediator.Send(new GetAllDietitiansQuery());
+                var dietitian = dietitians.FirstOrDefault(d => d.UserId == userId);
+                
+                if (dietitian == null)
+                {
+                    throw new NotFoundException("No dietitian profile found for this user");
+                }
+                
+                if (dietitian.Id != clientToCheck.DietitianId)
+                {
+                    throw new ForbiddenException("You don't have permission to delete this client");
+                }
+            }
+
+            var command = new DeleteClientCommand(id);
+            var result = await _mediator.Send(command);
+
+            Log.Information("Client deleted successfully. Client ID: {ClientId}", id);
+            return Ok(result);
+        }
+
+        [HttpGet("{id}")]
+        [Authorize(Roles = "Admin,Dietitian")]
+        public async Task<IActionResult> GetById(Guid id)
+        {
+            Log.Information("Getting client with ID: {ClientId}", id);
+            
+            // Check if user is admin or the dietitian responsible for this client
+            var userRole = User.FindFirstValue("role");
+            var userIdClaim = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            
+            if (string.IsNullOrEmpty(userIdClaim) || !Guid.TryParse(userIdClaim, out var userId))
+            {
+                throw new UnauthorizedException("Invalid user authentication");
+            }
+
+            // Get the client to check permissions
+            var client = await _mediator.Send(new GetClientByIdQuery(id));
+            // Note: GetClientByIdQuery now throws NotFoundException if client not found
+
+            if (userRole == Role.Dietitian.ToString())
+            {
+                // Get the dietitian's ID from their user ID
+                var dietitians = await _mediator.Send(new GetAllDietitiansQuery());
+                var dietitian = dietitians.FirstOrDefault(d => d.UserId == userId);
+                
+                if (dietitian == null)
+                {
+                    throw new NotFoundException("No dietitian profile found for this user");
+                }
+                
+                if (dietitian.Id != client.DietitianId)
+                {
+                    throw new ForbiddenException("You don't have permission to view this client");
+                }
+            }
+
+            return Ok(client);
+        }
+
+        [HttpGet]
+        [Authorize(Roles = "Admin,Dietitian")]
+        public async Task<IActionResult> GetAll()
+        {
+            Log.Information("Getting all clients");
+            
+            var userRole = User.FindFirstValue("role");
+            var userIdClaim = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            
+            if (string.IsNullOrEmpty(userIdClaim) || !Guid.TryParse(userIdClaim, out var userId))
+            {
+                throw new UnauthorizedException("Invalid user authentication");
+            }
+
+            var clients = await _mediator.Send(new GetAllClientsQuery());
+
+            // If the user is a dietitian, only return their clients
+            if (userRole == Role.Dietitian.ToString())
+            {
+                // Get the dietitian's ID from their user ID
+                var dietitians = await _mediator.Send(new GetAllDietitiansQuery());
+                var dietitian = dietitians.FirstOrDefault(d => d.UserId == userId);
+                
+                if (dietitian == null)
+                {
+                    throw new NotFoundException("No dietitian profile found for this user");
+                }
+
+                clients = clients.Where(c => c.DietitianId == dietitian.Id).ToList();
+            }
+
+            return Ok(clients);
+        }
+    }
+}

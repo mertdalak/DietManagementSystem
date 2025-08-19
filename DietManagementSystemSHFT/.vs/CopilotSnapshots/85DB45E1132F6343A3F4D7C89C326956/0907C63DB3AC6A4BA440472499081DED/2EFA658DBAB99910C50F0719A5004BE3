@@ -1,0 +1,88 @@
+﻿using MediatR;
+using Microsoft.EntityFrameworkCore;
+using DietManagementSystemSHFT.Data;
+using DietManagementSystemSHFT.Entities;
+using DietManagementSystemSHFT.API.Models.ResponseModels;
+using DietManagementSystemSHFT.API.CQRS.Commands.DietPlanCommands;
+
+namespace DietManagementSystemSHFT.API.CQRS.Handlers.DietPlanHandlers
+{
+    public class CreateDietPlanCommandHandler : IRequestHandler<CreateDietPlanCommand, BaseResponseModel>
+    {
+        private readonly DietManagementDbContext _dbContext;
+
+        public CreateDietPlanCommandHandler(DietManagementDbContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
+
+        public async Task<BaseResponseModel> Handle(CreateDietPlanCommand request, CancellationToken cancellationToken)
+        {
+            // Check if client exists
+            var client = await _dbContext.Clients
+                .FindAsync(new object[] { request.ClientId }, cancellationToken);
+                
+            if (client == null)
+            {
+                return new BaseResponseModel
+                {
+                    IsSuccess = false,
+                    Message = "Client not found"
+                };
+            }
+
+            // Check if dietitian exists
+            var dietitian = await _dbContext.Dietitians
+                .FindAsync(new object[] { request.DietitianId }, cancellationToken);
+                
+            if (dietitian == null)
+            {
+                return new BaseResponseModel
+                {
+                    IsSuccess = false,
+                    Message = "Dietitian not found"
+                };
+            }
+
+            // Validate that the client belongs to the dietitian
+            if (client.DietitianId != request.DietitianId)
+            {
+                return new BaseResponseModel
+                {
+                    IsSuccess = false,
+                    Message = "Client does not belong to this dietitian"
+                };
+            }
+
+            // Validate date range
+            if (request.EndDate <= request.StartDate)
+            {
+                return new BaseResponseModel
+                {
+                    IsSuccess = false,
+                    Message = "End date must be after start date"
+                };
+            }
+
+            var dietPlan = new DietPlan
+            {
+                Title = request.Title,
+                StartDate = request.StartDate,
+                EndDate = request.EndDate,
+                InitialWeight = request.InitialWeight,
+                ClientId = request.ClientId,
+                DietitianId = request.DietitianId,
+                CreatedAt = DateTime.UtcNow
+            };
+
+            await _dbContext.DietPlans.AddAsync(dietPlan, cancellationToken);
+            await _dbContext.SaveChangesAsync(cancellationToken);
+
+            return new BaseResponseModel
+            {
+                IsSuccess = true,
+                Message = "Diet plan created successfully"
+            };
+        }
+    }
+}

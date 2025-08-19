@@ -1,0 +1,39 @@
+﻿using DietManagementSystemSHFT.Exceptions;
+
+namespace DietManagementSystemSHFT.Services
+{
+    /// <summary>
+    /// Example service that demonstrates how to use custom exceptions
+    /// </summary>
+    public class ExceptionHandlingDemoService
+    {
+        /// <summary>
+        /// Demonstrates different types of exceptions
+        /// </summary>
+        /// <param name="exceptionType">Type of exception to throw</param>
+        public void DemonstrateExceptions(string exceptionType)
+        {
+            switch (exceptionType.ToLower())
+            {
+                case "notfound":
+                    throw new NotFoundException("The requested resource was not found.");
+                
+                case "badrequest":
+                    throw new BadRequestException("The request was invalid or cannot be otherwise served.");
+                
+                case "unauthorized":
+                    throw new UnauthorizedException("Authentication credentials were missing or incorrect.");
+                
+                case "forbidden":
+                    throw new ForbiddenException("The request is understood, but it has been refused or access is not allowed.");
+                
+                case "unhandled":
+                    throw new InvalidOperationException("This is an unhandled exception that will be caught by the global exception handler.");
+                
+                default:
+                    // No exception
+                    break;
+            }
+        }
+    }
+}

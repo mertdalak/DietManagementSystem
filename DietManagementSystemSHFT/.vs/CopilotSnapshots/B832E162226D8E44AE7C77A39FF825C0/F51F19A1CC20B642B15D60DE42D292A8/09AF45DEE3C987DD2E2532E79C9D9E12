@@ -1,0 +1,7 @@
+﻿using MediatR;
+using DietManagementSystemSHFT.Models.ResponseModels;
+
+namespace DietManagementSystemSHFT.CQRS.Commands
+{
+    public record DeleteDietitianCommand(Guid Id) : IRequest<BaseResponseModel>;
+}

@@ -1,0 +1,129 @@
+﻿using FluentValidation;
+using DietManagementSystemSHFT.API.Models.ResponseModels;
+using Microsoft.AspNetCore.Http;
+using System.Net;
+using System.Text.Json;
+using DietManagementSystemSHFT.Exceptions;
+
+namespace DietManagementSystemSHFT.Middleware
+{
+    public class ExceptionHandlingMiddleware
+    {
+        private readonly RequestDelegate _next;
+        private readonly ILogger<ExceptionHandlingMiddleware> _logger;
+        private readonly IWebHostEnvironment _environment;
+
+        public ExceptionHandlingMiddleware(
+            RequestDelegate next, 
+            ILogger<ExceptionHandlingMiddleware> logger,
+            IWebHostEnvironment environment)
+        {
+            _next = next;
+            _logger = logger;
+            _environment = environment;
+        }
+
+        public async Task InvokeAsync(HttpContext context)
+        {
+            try
+            {
+                await _next(context);
+            }
+            catch (ValidationException ex)
+            {
+                _logger.LogWarning(ex, "Validation error occurred");
+                await HandleValidationExceptionAsync(context, ex);
+            }
+            catch (ApplicationException ex)
+            {
+                _logger.LogWarning(ex, "Application exception of type {ExceptionType} occurred: {Message}", 
+                    ex.GetType().Name, ex.Message);
+                await HandleApplicationExceptionAsync(context, ex);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "An unexpected error occurred");
+                await HandleExceptionAsync(context, ex);
+            }
+        }
+
+        private async Task HandleApplicationExceptionAsync(HttpContext context, ApplicationException exception)
+        {
+            context.Response.ContentType = "application/json";
+            context.Response.StatusCode = (int)exception.StatusCode;
+
+            var response = new ErrorResponseModel
+            {
+                IsSuccess = false,
+                Message = exception.Message,
+                ErrorCode = exception.ErrorCode
+            };
+
+            // Only include stack trace in development environment
+            if (_environment.IsDevelopment())
+            {
+                response.StackTrace = exception.StackTrace;
+            }
+
+            await context.Response.WriteAsync(JsonSerializer.Serialize(response, new JsonSerializerOptions
+            {
+                PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+            }));
+        }
+
+        private async Task HandleValidationExceptionAsync(HttpContext context, ValidationException exception)
+        {
+            context.Response.ContentType = "application/json";
+            context.Response.StatusCode = (int)HttpStatusCode.BadRequest;
+
+            var errors = exception.Errors
+                .Select(error => new 
+                { 
+                    Property = error.PropertyName, 
+                    Message = error.ErrorMessage,
+                    AttemptedValue = error.AttemptedValue,
+                    ErrorCode = error.ErrorCode
+                })
+                .ToList();
+
+            var response = new ErrorResponseModel
+            {
+                IsSuccess = false,
+                Message = "Validation failed",
+                ErrorCode = "ValidationFailed",
+                Details = errors
+            };
+
+            await context.Response.WriteAsync(JsonSerializer.Serialize(response, new JsonSerializerOptions
+            {
+                PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+            }));
+        }
+
+        private async Task HandleExceptionAsync(HttpContext context, Exception exception)
+        {
+            context.Response.ContentType = "application/json";
+            context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+
+            var response = new ErrorResponseModel
+            {
+                IsSuccess = false,
+                Message = "An internal server error occurred. Please try again later.",
+                ErrorCode = "InternalServerError"
+            };
+
+            // Only include detailed error information in development environment
+            if (_environment.IsDevelopment())
+            {
+                response.Message = exception.Message;
+                response.Details = exception.InnerException?.Message;
+                response.StackTrace = exception.StackTrace;
+            }
+
+            await context.Response.WriteAsync(JsonSerializer.Serialize(response, new JsonSerializerOptions
+            {
+                PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+            }));
+        }
+    }
+}

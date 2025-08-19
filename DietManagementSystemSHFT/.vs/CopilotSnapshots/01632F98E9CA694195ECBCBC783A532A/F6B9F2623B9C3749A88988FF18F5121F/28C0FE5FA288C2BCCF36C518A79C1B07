@@ -1,0 +1,39 @@
+﻿using MediatR;
+using Microsoft.EntityFrameworkCore;
+using DietManagementSystemSHFT.Data;
+using DietManagementSystemSHFT.Models.ResponseModels;
+using DietManagementSystemSHFT.API.CQRS.Queries.ClientQueries;
+
+namespace DietManagementSystemSHFT.API.CQRS.Handlers.ClientHandlers
+{
+    public class GetClientByIdQueryHandler : IRequestHandler<GetClientByIdQuery, ClientResponseModel>
+    {
+        private readonly DietManagementDbContext _dbContext;
+
+        public GetClientByIdQueryHandler(DietManagementDbContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
+
+        public async Task<ClientResponseModel> Handle(GetClientByIdQuery request, CancellationToken cancellationToken)
+        {
+            var client = await _dbContext.Clients
+                .Where(c => c.Id == request.Id && !c.IsDeleted)
+                .Select(c => new ClientResponseModel
+                {
+                    Id = c.Id,
+                    FullName = c.FullName,
+                    InitialWeight = c.InitialWeight,
+                    CurrentWeight = c.CurrentWeight,
+                    DietitianId = c.DietitianId,
+                    CreatedAt = c.CreatedAt,
+                    UpdatedAt = c.UpdatedAt,
+                    IsDeleted = c.IsDeleted,
+                    DeletedAt = c.DeletedAt
+                })
+                .FirstOrDefaultAsync(cancellationToken);
+
+            return client;
+        }
+    }
+}

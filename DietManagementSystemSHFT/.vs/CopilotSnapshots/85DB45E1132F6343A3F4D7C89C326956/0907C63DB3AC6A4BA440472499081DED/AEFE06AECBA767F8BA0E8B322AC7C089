@@ -1,0 +1,339 @@
+﻿using MediatR;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
+using DietManagementSystemSHFT.Models.RequestModels;
+using DietManagementSystem.Data.Enums;
+using DietManagementSystemSHFT.API.CQRS.Commands.MealCommands;
+using DietManagementSystemSHFT.API.CQRS.Queries.MealQueries;
+using DietManagementSystemSHFT.API.CQRS.Queries.DietPlanQueries;
+using DietManagementSystemSHFT.API.CQRS.Queries.DietitanQueries;
+using DietManagementSystemSHFT.Exceptions;
+
+namespace DietManagementSystemSHFT.Controllers
+{
+    [ApiController]
+    [Route("api/[controller]")]
+    [Authorize]
+    public class MealController : ControllerBase
+    {
+        private readonly IMediator _mediator;
+        private readonly ILogger<MealController> _logger;
+
+        public MealController(IMediator mediator, ILogger<MealController> logger)
+        {
+            _mediator = mediator;
+            _logger = logger;
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Admin,Dietitian")]
+        public async Task<IActionResult> Create([FromBody] MealRequestModel request)
+        {
+            _logger.LogInformation("Creating new meal for diet plan ID: {DietPlanId}", request.DietPlanId);
+            
+            // Check if user is admin or the dietitian responsible for this diet plan
+            var userRole = User.FindFirstValue("role");
+            var userIdClaim = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            
+            if (string.IsNullOrEmpty(userIdClaim) || !Guid.TryParse(userIdClaim, out var userId))
+            {
+                throw new UnauthorizedException("Invalid user authentication");
+            }
+
+            // Get the diet plan to check permissions
+            var dietPlan = await _mediator.Send(new GetDietPlanByIdQuery(request.DietPlanId));
+            if (dietPlan == null)
+            {
+                throw new NotFoundException($"Diet plan with ID {request.DietPlanId} not found");
+            }
+
+            if (userRole == Role.Dietitian.ToString())
+            {
+                // Get the dietitian's ID from their user ID
+                var dietitians = await _mediator.Send(new GetAllDietitiansQuery());
+                var dietitian = dietitians.FirstOrDefault(d => d.UserId == userId);
+                
+                if (dietitian == null)
+                {
+                    throw new NotFoundException("No dietitian profile found for this user");
+                }
+                
+                if (dietitian.Id != dietPlan.DietitianId)
+                {
+                    throw new ForbiddenException("You don't have permission to create meals for this diet plan");
+                }
+            }
+
+            var command = CreateMealCommand.FromRequest(request);
+            var result = await _mediator.Send(command);
+
+            return Ok(result);
+        }
+
+        [HttpPut("{id}")]
+        [Authorize(Roles = "Admin,Dietitian")]
+        public async Task<IActionResult> Update(Guid id, [FromBody] MealRequestModel request)
+        {
+            _logger.LogInformation("Updating meal with ID: {MealId} for diet plan ID: {DietPlanId}", id, request.DietPlanId);
+            
+            // Check if user is admin or the dietitian responsible for this meal's diet plan
+            var userRole = User.FindFirstValue("role");
+            var userIdClaim = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            
+            if (string.IsNullOrEmpty(userIdClaim) || !Guid.TryParse(userIdClaim, out var userId))
+            {
+                throw new UnauthorizedException("Invalid user authentication");
+            }
+
+            // Get the meal to check permissions
+            var meal = await _mediator.Send(new GetMealByIdQuery(id));
+            if (meal == null)
+            {
+                throw new NotFoundException($"Meal with ID {id} not found");
+            }
+
+            // Get the diet plan
+            var dietPlan = await _mediator.Send(new GetDietPlanByIdQuery(meal.DietPlanId));
+            if (dietPlan == null)
+            {
+                throw new NotFoundException($"Diet plan with ID {meal.DietPlanId} not found");
+            }
+
+            if (userRole == Role.Dietitian.ToString())
+            {
+                // Get the dietitian's ID from their user ID
+                var dietitians = await _mediator.Send(new GetAllDietitiansQuery());
+                var dietitian = dietitians.FirstOrDefault(d => d.UserId == userId);
+                
+                if (dietitian == null)
+                {
+                    throw new NotFoundException("No dietitian profile found for this user");
+                }
+                
+                if (dietitian.Id != dietPlan.DietitianId)
+                {
+                    throw new ForbiddenException("You don't have permission to update this meal");
+                }
+            }
+
+            // If updating to a different diet plan, check permissions for that plan too
+            if (request.DietPlanId != meal.DietPlanId)
+            {
+                var newDietPlan = await _mediator.Send(new GetDietPlanByIdQuery(request.DietPlanId));
+                if (newDietPlan == null)
+                {
+                    throw new NotFoundException($"New diet plan with ID {request.DietPlanId} not found");
+                }
+
+                if (userRole == Role.Dietitian.ToString())
+                {
+                    // Get the dietitian's ID from their user ID
+                    var dietitians = await _mediator.Send(new GetAllDietitiansQuery());
+                    var dietitian = dietitians.FirstOrDefault(d => d.UserId == userId);
+                    
+                    if (dietitian == null)
+                    {
+                        throw new NotFoundException("No dietitian profile found for this user");
+                    }
+                    
+                    if (dietitian.Id != newDietPlan.DietitianId)
+                    {
+                        throw new ForbiddenException("You don't have permission to move this meal to the selected diet plan");
+                    }
+                }
+            }
+
+            var command = UpdateMealCommand.FromRequest(id, request);
+            var result = await _mediator.Send(command);
+
+            return Ok(result);
+        }
+
+        [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin,Dietitian")]
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            _logger.LogInformation("Deleting meal with ID: {MealId}", id);
+            
+            // Check if user is admin or the dietitian responsible for this meal's diet plan
+            var userRole = User.FindFirstValue("role");
+            var userIdClaim = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            
+            if (string.IsNullOrEmpty(userIdClaim) || !Guid.TryParse(userIdClaim, out var userId))
+            {
+                throw new UnauthorizedException("Invalid user authentication");
+            }
+
+            // Get the meal to check permissions
+            var meal = await _mediator.Send(new GetMealByIdQuery(id));
+            if (meal == null)
+            {
+                throw new NotFoundException($"Meal with ID {id} not found");
+            }
+
+            // Get the diet plan
+            var dietPlan = await _mediator.Send(new GetDietPlanByIdQuery(meal.DietPlanId));
+            if (dietPlan == null)
+            {
+                throw new NotFoundException($"Diet plan with ID {meal.DietPlanId} not found");
+            }
+
+            if (userRole == Role.Dietitian.ToString())
+            {
+                // Get the dietitian's ID from their user ID
+                var dietitians = await _mediator.Send(new GetAllDietitiansQuery());
+                var dietitian = dietitians.FirstOrDefault(d => d.UserId == userId);
+                
+                if (dietitian == null)
+                {
+                    throw new NotFoundException("No dietitian profile found for this user");
+                }
+                
+                if (dietitian.Id != dietPlan.DietitianId)
+                {
+                    throw new ForbiddenException("You don't have permission to delete this meal");
+                }
+            }
+
+            var command = new DeleteMealCommand(id);
+            var result = await _mediator.Send(command);
+
+            return Ok(result);
+        }
+
+        [HttpGet("{id}")]
+        [Authorize(Roles = "Admin,Dietitian")]
+        public async Task<IActionResult> GetById(Guid id)
+        {
+            _logger.LogInformation("Getting meal with ID: {MealId}", id);
+            
+            // Check if user is admin or the dietitian responsible for this meal's diet plan
+            var userRole = User.FindFirstValue("role");
+            var userIdClaim = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            
+            if (string.IsNullOrEmpty(userIdClaim) || !Guid.TryParse(userIdClaim, out var userId))
+            {
+                throw new UnauthorizedException("Invalid user authentication");
+            }
+
+            // Get the meal
+            var meal = await _mediator.Send(new GetMealByIdQuery(id));
+            if (meal == null)
+            {
+                throw new NotFoundException($"Meal with ID {id} not found");
+            }
+
+            // Get the diet plan
+            var dietPlan = await _mediator.Send(new GetDietPlanByIdQuery(meal.DietPlanId));
+            if (dietPlan == null)
+            {
+                throw new NotFoundException($"Diet plan with ID {meal.DietPlanId} not found");
+            }
+
+            if (userRole == Role.Dietitian.ToString())
+            {
+                // Get the dietitian's ID from their user ID
+                var dietitians = await _mediator.Send(new GetAllDietitiansQuery());
+                var dietitian = dietitians.FirstOrDefault(d => d.UserId == userId);
+                
+                if (dietitian == null)
+                {
+                    throw new NotFoundException("No dietitian profile found for this user");
+                }
+                
+                if (dietitian.Id != dietPlan.DietitianId)
+                {
+                    throw new ForbiddenException("You don't have permission to view this meal");
+                }
+            }
+
+            return Ok(meal);
+        }
+
+        [HttpGet]
+        [Authorize(Roles = "Admin,Dietitian")]
+        public async Task<IActionResult> GetAll()
+        {
+            _logger.LogInformation("Getting all meals");
+            
+            var userRole = User.FindFirstValue("role");
+            var userIdClaim = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            
+            if (string.IsNullOrEmpty(userIdClaim) || !Guid.TryParse(userIdClaim, out var userId))
+            {
+                throw new UnauthorizedException("Invalid user authentication");
+            }
+
+            var meals = await _mediator.Send(new GetAllMealsQuery());
+
+            // If the user is a dietitian, only return meals from their diet plans
+            if (userRole == Role.Dietitian.ToString())
+            {
+                // Get the dietitian's ID from their user ID
+                var dietitians = await _mediator.Send(new GetAllDietitiansQuery());
+                var dietitian = dietitians.FirstOrDefault(d => d.UserId == userId);
+                
+                if (dietitian == null)
+                {
+                    throw new NotFoundException("No dietitian profile found for this user");
+                }
+
+                // Get all diet plans for this dietitian
+                var dietPlans = await _mediator.Send(new GetAllDietPlansQuery());
+                var dietitianDietPlanIds = dietPlans
+                    .Where(dp => dp.DietitianId == dietitian.Id)
+                    .Select(dp => dp.Id)
+                    .ToList();
+
+                // Filter meals to only include those from the dietitian's diet plans
+                meals = meals.Where(m => dietitianDietPlanIds.Contains(m.DietPlanId)).ToList();
+            }
+
+            return Ok(meals);
+        }
+
+        [HttpGet("dietplan/{dietPlanId}")]
+        [Authorize(Roles = "Admin,Dietitian")]
+        public async Task<IActionResult> GetByDietPlanId(Guid dietPlanId)
+        {
+            _logger.LogInformation("Getting meals for diet plan with ID: {DietPlanId}", dietPlanId);
+            
+            // Check if user is admin or the dietitian responsible for this diet plan
+            var userRole = User.FindFirstValue("role");
+            var userIdClaim = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            
+            if (string.IsNullOrEmpty(userIdClaim) || !Guid.TryParse(userIdClaim, out var userId))
+            {
+                throw new UnauthorizedException("Invalid user authentication");
+            }
+
+            // Get the diet plan to check permissions
+            var dietPlan = await _mediator.Send(new GetDietPlanByIdQuery(dietPlanId));
+            if (dietPlan == null)
+            {
+                throw new NotFoundException($"Diet plan with ID {dietPlanId} not found");
+            }
+
+            if (userRole == Role.Dietitian.ToString())
+            {
+                // Get the dietitian's ID from their user ID
+                var dietitians = await _mediator.Send(new GetAllDietitiansQuery());
+                var dietitian = dietitians.FirstOrDefault(d => d.UserId == userId);
+                
+                if (dietitian == null)
+                {
+                    throw new NotFoundException("No dietitian profile found for this user");
+                }
+                
+                if (dietitian.Id != dietPlan.DietitianId)
+                {
+                    throw new ForbiddenException("You don't have permission to view meals for this diet plan");
+                }
+            }
+
+            var meals = await _mediator.Send(new GetMealsByDietPlanIdQuery(dietPlanId));
+            return Ok(meals);
+        }
+    }
+}

@@ -1,0 +1,35 @@
+﻿using FluentValidation;
+using DietManagementSystemSHFT.API.CQRS.Commands.DietPlanCommands;
+
+namespace DietManagementSystemSHFT.CQRS.Validators
+{
+    public class UpdateDietPlanCommandValidator : AbstractValidator<UpdateDietPlanCommand>
+    {
+        public UpdateDietPlanCommandValidator()
+        {
+            RuleFor(x => x.Id)
+                .NotEmpty().WithMessage("Diet plan ID is required");
+                
+            RuleFor(x => x.Title)
+                .NotEmpty().WithMessage("Title is required")
+                .MaximumLength(100).WithMessage("Title must not exceed 100 characters");
+
+            RuleFor(x => x.StartDate)
+                .NotEmpty().WithMessage("Start date is required")
+                .LessThan(x => x.EndDate).WithMessage("Start date must be before end date");
+
+            RuleFor(x => x.EndDate)
+                .NotEmpty().WithMessage("End date is required")
+                .GreaterThan(x => x.StartDate).WithMessage("End date must be after start date");
+
+            RuleFor(x => x.InitialWeight)
+                .GreaterThan(0).WithMessage("Initial weight must be greater than 0");
+
+            RuleFor(x => x.ClientId)
+                .NotEmpty().WithMessage("Client ID is required");
+
+            RuleFor(x => x.DietitianId)
+                .NotEmpty().WithMessage("Dietitian ID is required");
+        }
+    }
+}

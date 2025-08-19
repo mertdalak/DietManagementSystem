@@ -1,0 +1,998 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{7A3252DF-DDAB-41A5-9F20-68DD8261EB80}|DietManagementSystemSHFT\\DietManagementSystemSHFT.API.csproj|c:\\users\\mrt19\\source\\repos\\dietmanagementsystemshft\\dietmanagementsystemshft\\cqrs\\handlers\\dietplanhandlers\\deletedietplancommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7A3252DF-DDAB-41A5-9F20-68DD8261EB80}|DietManagementSystemSHFT\\DietManagementSystemSHFT.API.csproj|solutionrelative:dietmanagementsystemshft\\cqrs\\handlers\\dietplanhandlers\\deletedietplancommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7A3252DF-DDAB-41A5-9F20-68DD8261EB80}|DietManagementSystemSHFT\\DietManagementSystemSHFT.API.csproj|c:\\users\\mrt19\\source\\repos\\dietmanagementsystemshft\\dietmanagementsystemshft\\cqrs\\handlers\\clienthandlers\\updateclientcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7A3252DF-DDAB-41A5-9F20-68DD8261EB80}|DietManagementSystemSHFT\\DietManagementSystemSHFT.API.csproj|solutionrelative:dietmanagementsystemshft\\cqrs\\handlers\\clienthandlers\\updateclientcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD6AEB3F-A81E-4B69-89F4-0F4091F40856}|DietManagementSystem.Data\\DietManagementSystem.Data.csproj|c:\\users\\mrt19\\source\\repos\\dietmanagementsystemshft\\dietmanagementsystem.data\\entities\\refreshtoken.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD6AEB3F-A81E-4B69-89F4-0F4091F40856}|DietManagementSystem.Data\\DietManagementSystem.Data.csproj|solutionrelative:dietmanagementsystem.data\\entities\\refreshtoken.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7A3252DF-DDAB-41A5-9F20-68DD8261EB80}|DietManagementSystemSHFT\\DietManagementSystemSHFT.API.csproj|c:\\users\\mrt19\\source\\repos\\dietmanagementsystemshft\\dietmanagementsystemshft\\cqrs\\handlers\\clientprogresshandlers\\deleteclientprogresscommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7A3252DF-DDAB-41A5-9F20-68DD8261EB80}|DietManagementSystemSHFT\\DietManagementSystemSHFT.API.csproj|solutionrelative:dietmanagementsystemshft\\cqrs\\handlers\\clientprogresshandlers\\deleteclientprogresscommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7A3252DF-DDAB-41A5-9F20-68DD8261EB80}|DietManagementSystemSHFT\\DietManagementSystemSHFT.API.csproj|c:\\users\\mrt19\\source\\repos\\dietmanagementsystemshft\\dietmanagementsystemshft\\cqrs\\handlers\\clientprogresshandlers\\updateclientprogresscommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7A3252DF-DDAB-41A5-9F20-68DD8261EB80}|DietManagementSystemSHFT\\DietManagementSystemSHFT.API.csproj|solutionrelative:dietmanagementsystemshft\\cqrs\\handlers\\clientprogresshandlers\\updateclientprogresscommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7A3252DF-DDAB-41A5-9F20-68DD8261EB80}|DietManagementSystemSHFT\\DietManagementSystemSHFT.API.csproj|c:\\users\\mrt19\\source\\repos\\dietmanagementsystemshft\\dietmanagementsystemshft\\cqrs\\handlers\\dietplanhandlers\\updatedietplancommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7A3252DF-DDAB-41A5-9F20-68DD8261EB80}|DietManagementSystemSHFT\\DietManagementSystemSHFT.API.csproj|solutionrelative:dietmanagementsystemshft\\cqrs\\handlers\\dietplanhandlers\\updatedietplancommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7A3252DF-DDAB-41A5-9F20-68DD8261EB80}|DietManagementSystemSHFT\\DietManagementSystemSHFT.API.csproj|c:\\users\\mrt19\\source\\repos\\dietmanagementsystemshft\\dietmanagementsystemshft\\cqrs\\handlers\\mealhandlers\\updatemealcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7A3252DF-DDAB-41A5-9F20-68DD8261EB80}|DietManagementSystemSHFT\\DietManagementSystemSHFT.API.csproj|solutionrelative:dietmanagementsystemshft\\cqrs\\handlers\\mealhandlers\\updatemealcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD6AEB3F-A81E-4B69-89F4-0F4091F40856}|DietManagementSystem.Data\\DietManagementSystem.Data.csproj|c:\\users\\mrt19\\source\\repos\\dietmanagementsystemshft\\dietmanagementsystem.data\\entities\\meal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD6AEB3F-A81E-4B69-89F4-0F4091F40856}|DietManagementSystem.Data\\DietManagementSystem.Data.csproj|solutionrelative:dietmanagementsystem.data\\entities\\meal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD6AEB3F-A81E-4B69-89F4-0F4091F40856}|DietManagementSystem.Data\\DietManagementSystem.Data.csproj|c:\\users\\mrt19\\source\\repos\\dietmanagementsystemshft\\dietmanagementsystem.data\\entities\\dietplan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD6AEB3F-A81E-4B69-89F4-0F4091F40856}|DietManagementSystem.Data\\DietManagementSystem.Data.csproj|solutionrelative:dietmanagementsystem.data\\entities\\dietplan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD6AEB3F-A81E-4B69-89F4-0F4091F40856}|DietManagementSystem.Data\\DietManagementSystem.Data.csproj|c:\\users\\mrt19\\source\\repos\\dietmanagementsystemshft\\dietmanagementsystem.data\\entities\\client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD6AEB3F-A81E-4B69-89F4-0F4091F40856}|DietManagementSystem.Data\\DietManagementSystem.Data.csproj|solutionrelative:dietmanagementsystem.data\\entities\\client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7A3252DF-DDAB-41A5-9F20-68DD8261EB80}|DietManagementSystemSHFT\\DietManagementSystemSHFT.API.csproj|c:\\users\\mrt19\\source\\repos\\dietmanagementsystemshft\\dietmanagementsystemshft\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{7A3252DF-DDAB-41A5-9F20-68DD8261EB80}|DietManagementSystemSHFT\\DietManagementSystemSHFT.API.csproj|solutionrelative:dietmanagementsystemshft\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7A3252DF-DDAB-41A5-9F20-68DD8261EB80}|DietManagementSystemSHFT\\DietManagementSystemSHFT.API.csproj|c:\\users\\mrt19\\source\\repos\\dietmanagementsystemshft\\dietmanagementsystemshft\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{7A3252DF-DDAB-41A5-9F20-68DD8261EB80}|DietManagementSystemSHFT\\DietManagementSystemSHFT.API.csproj|solutionrelative:dietmanagementsystemshft\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystem.Tests\\CQRS\\Handlers\\DietPlanHandlers\\CreateDietPlanCommandHandlerTests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:DietManagementSystem.Tests\\CQRS\\Handlers\\DietPlanHandlers\\CreateDietPlanCommandHandlerTests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystem.Tests\\Controllers\\MealControllerTests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:DietManagementSystem.Tests\\Controllers\\MealControllerTests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystem.Tests\\DietManagementSystem.Tests.csproj||{8B382828-6202-11D1-8870-0000F87579D2}|",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:DietManagementSystem.Tests\\DietManagementSystem.Tests.csproj||{8B382828-6202-11D1-8870-0000F87579D2}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7A3252DF-DDAB-41A5-9F20-68DD8261EB80}|DietManagementSystemSHFT\\DietManagementSystemSHFT.API.csproj|c:\\users\\mrt19\\source\\repos\\dietmanagementsystemshft\\dietmanagementsystemshft\\validators\\mealrequestmodelvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7A3252DF-DDAB-41A5-9F20-68DD8261EB80}|DietManagementSystemSHFT\\DietManagementSystemSHFT.API.csproj|solutionrelative:dietmanagementsystemshft\\validators\\mealrequestmodelvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystem.Tests\\Behaviors\\ValidationBehaviorTests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:DietManagementSystem.Tests\\Behaviors\\ValidationBehaviorTests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystem.Tests\\Validators\\DietPlanRequestModelValidatorTests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:DietManagementSystem.Tests\\Validators\\DietPlanRequestModelValidatorTests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7A3252DF-DDAB-41A5-9F20-68DD8261EB80}|DietManagementSystemSHFT\\DietManagementSystemSHFT.API.csproj|c:\\users\\mrt19\\source\\repos\\dietmanagementsystemshft\\dietmanagementsystemshft\\cqrs\\handlers\\dietplanhandlers\\createdietplancommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7A3252DF-DDAB-41A5-9F20-68DD8261EB80}|DietManagementSystemSHFT\\DietManagementSystemSHFT.API.csproj|solutionrelative:dietmanagementsystemshft\\cqrs\\handlers\\dietplanhandlers\\createdietplancommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7A3252DF-DDAB-41A5-9F20-68DD8261EB80}|DietManagementSystemSHFT\\DietManagementSystemSHFT.API.csproj|c:\\users\\mrt19\\source\\repos\\dietmanagementsystemshft\\dietmanagementsystemshft\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7A3252DF-DDAB-41A5-9F20-68DD8261EB80}|DietManagementSystemSHFT\\DietManagementSystemSHFT.API.csproj|solutionrelative:dietmanagementsystemshft\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7A3252DF-DDAB-41A5-9F20-68DD8261EB80}|DietManagementSystemSHFT\\DietManagementSystemSHFT.API.csproj|c:\\users\\mrt19\\source\\repos\\dietmanagementsystemshft\\dietmanagementsystemshft\\controllers\\dietitiancontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7A3252DF-DDAB-41A5-9F20-68DD8261EB80}|DietManagementSystemSHFT\\DietManagementSystemSHFT.API.csproj|solutionrelative:dietmanagementsystemshft\\controllers\\dietitiancontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7A3252DF-DDAB-41A5-9F20-68DD8261EB80}|DietManagementSystemSHFT\\DietManagementSystemSHFT.API.csproj|c:\\users\\mrt19\\source\\repos\\dietmanagementsystemshft\\dietmanagementsystemshft\\controllers\\clientcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7A3252DF-DDAB-41A5-9F20-68DD8261EB80}|DietManagementSystemSHFT\\DietManagementSystemSHFT.API.csproj|solutionrelative:dietmanagementsystemshft\\controllers\\clientcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7A3252DF-DDAB-41A5-9F20-68DD8261EB80}|DietManagementSystemSHFT\\DietManagementSystemSHFT.API.csproj|c:\\users\\mrt19\\source\\repos\\dietmanagementsystemshft\\dietmanagementsystemshft\\middleware\\exceptionhandlingmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7A3252DF-DDAB-41A5-9F20-68DD8261EB80}|DietManagementSystemSHFT\\DietManagementSystemSHFT.API.csproj|solutionrelative:dietmanagementsystemshft\\middleware\\exceptionhandlingmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7A3252DF-DDAB-41A5-9F20-68DD8261EB80}|DietManagementSystemSHFT\\DietManagementSystemSHFT.API.csproj|c:\\users\\mrt19\\source\\repos\\dietmanagementsystemshft\\dietmanagementsystemshft\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7A3252DF-DDAB-41A5-9F20-68DD8261EB80}|DietManagementSystemSHFT\\DietManagementSystemSHFT.API.csproj|solutionrelative:dietmanagementsystemshft\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7A3252DF-DDAB-41A5-9F20-68DD8261EB80}|DietManagementSystemSHFT\\DietManagementSystemSHFT.API.csproj|c:\\users\\mrt19\\source\\repos\\dietmanagementsystemshft\\dietmanagementsystemshft\\controllers\\dietplancontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7A3252DF-DDAB-41A5-9F20-68DD8261EB80}|DietManagementSystemSHFT\\DietManagementSystemSHFT.API.csproj|solutionrelative:dietmanagementsystemshft\\controllers\\dietplancontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7A3252DF-DDAB-41A5-9F20-68DD8261EB80}|DietManagementSystemSHFT\\DietManagementSystemSHFT.API.csproj|c:\\users\\mrt19\\source\\repos\\dietmanagementsystemshft\\dietmanagementsystemshft\\validators\\loginrequestmodelvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7A3252DF-DDAB-41A5-9F20-68DD8261EB80}|DietManagementSystemSHFT\\DietManagementSystemSHFT.API.csproj|solutionrelative:dietmanagementsystemshft\\validators\\loginrequestmodelvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7A3252DF-DDAB-41A5-9F20-68DD8261EB80}|DietManagementSystemSHFT\\DietManagementSystemSHFT.API.csproj|c:\\users\\mrt19\\source\\repos\\dietmanagementsystemshft\\dietmanagementsystemshft\\validators\\dietitianrequestmodelvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7A3252DF-DDAB-41A5-9F20-68DD8261EB80}|DietManagementSystemSHFT\\DietManagementSystemSHFT.API.csproj|solutionrelative:dietmanagementsystemshft\\validators\\dietitianrequestmodelvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7A3252DF-DDAB-41A5-9F20-68DD8261EB80}|DietManagementSystemSHFT\\DietManagementSystemSHFT.API.csproj|c:\\users\\mrt19\\source\\repos\\dietmanagementsystemshft\\dietmanagementsystemshft\\validators\\registerrequestmodelvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7A3252DF-DDAB-41A5-9F20-68DD8261EB80}|DietManagementSystemSHFT\\DietManagementSystemSHFT.API.csproj|solutionrelative:dietmanagementsystemshft\\validators\\registerrequestmodelvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7A3252DF-DDAB-41A5-9F20-68DD8261EB80}|DietManagementSystemSHFT\\DietManagementSystemSHFT.API.csproj|c:\\users\\mrt19\\source\\repos\\dietmanagementsystemshft\\dietmanagementsystemshft\\cqrs\\handlers\\dietitianhandlers\\updatedietitiancommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7A3252DF-DDAB-41A5-9F20-68DD8261EB80}|DietManagementSystemSHFT\\DietManagementSystemSHFT.API.csproj|solutionrelative:dietmanagementsystemshft\\cqrs\\handlers\\dietitianhandlers\\updatedietitiancommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7A3252DF-DDAB-41A5-9F20-68DD8261EB80}|DietManagementSystemSHFT\\DietManagementSystemSHFT.API.csproj|c:\\users\\mrt19\\source\\repos\\dietmanagementsystemshft\\dietmanagementsystemshft\\cqrs\\handlers\\registercommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7A3252DF-DDAB-41A5-9F20-68DD8261EB80}|DietManagementSystemSHFT\\DietManagementSystemSHFT.API.csproj|solutionrelative:dietmanagementsystemshft\\cqrs\\handlers\\registercommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7A3252DF-DDAB-41A5-9F20-68DD8261EB80}|DietManagementSystemSHFT\\DietManagementSystemSHFT.API.csproj|c:\\users\\mrt19\\source\\repos\\dietmanagementsystemshft\\dietmanagementsystemshft\\behaviors\\validationbehavior.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7A3252DF-DDAB-41A5-9F20-68DD8261EB80}|DietManagementSystemSHFT\\DietManagementSystemSHFT.API.csproj|solutionrelative:dietmanagementsystemshft\\behaviors\\validationbehavior.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7A3252DF-DDAB-41A5-9F20-68DD8261EB80}|DietManagementSystemSHFT\\DietManagementSystemSHFT.API.csproj|c:\\users\\mrt19\\source\\repos\\dietmanagementsystemshft\\dietmanagementsystemshft\\validators\\userrequestmodelvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7A3252DF-DDAB-41A5-9F20-68DD8261EB80}|DietManagementSystemSHFT\\DietManagementSystemSHFT.API.csproj|solutionrelative:dietmanagementsystemshft\\validators\\userrequestmodelvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7A3252DF-DDAB-41A5-9F20-68DD8261EB80}|DietManagementSystemSHFT\\DietManagementSystemSHFT.API.csproj|c:\\users\\mrt19\\source\\repos\\dietmanagementsystemshft\\dietmanagementsystemshft\\cqrs\\commands\\registercommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7A3252DF-DDAB-41A5-9F20-68DD8261EB80}|DietManagementSystemSHFT\\DietManagementSystemSHFT.API.csproj|solutionrelative:dietmanagementsystemshft\\cqrs\\commands\\registercommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7A3252DF-DDAB-41A5-9F20-68DD8261EB80}|DietManagementSystemSHFT\\DietManagementSystemSHFT.API.csproj|c:\\users\\mrt19\\source\\repos\\dietmanagementsystemshft\\dietmanagementsystemshft\\validators\\dietplanrequestmodelvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7A3252DF-DDAB-41A5-9F20-68DD8261EB80}|DietManagementSystemSHFT\\DietManagementSystemSHFT.API.csproj|solutionrelative:dietmanagementsystemshft\\validators\\dietplanrequestmodelvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7A3252DF-DDAB-41A5-9F20-68DD8261EB80}|DietManagementSystemSHFT\\DietManagementSystemSHFT.API.csproj|c:\\users\\mrt19\\source\\repos\\dietmanagementsystemshft\\dietmanagementsystemshft\\controllers\\mealcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7A3252DF-DDAB-41A5-9F20-68DD8261EB80}|DietManagementSystemSHFT\\DietManagementSystemSHFT.API.csproj|solutionrelative:dietmanagementsystemshft\\controllers\\mealcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7A3252DF-DDAB-41A5-9F20-68DD8261EB80}|DietManagementSystemSHFT\\DietManagementSystemSHFT.API.csproj|c:\\users\\mrt19\\source\\repos\\dietmanagementsystemshft\\dietmanagementsystemshft\\controllers\\clientprogresscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7A3252DF-DDAB-41A5-9F20-68DD8261EB80}|DietManagementSystemSHFT\\DietManagementSystemSHFT.API.csproj|solutionrelative:dietmanagementsystemshft\\controllers\\clientprogresscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7A3252DF-DDAB-41A5-9F20-68DD8261EB80}|DietManagementSystemSHFT\\DietManagementSystemSHFT.API.csproj|c:\\users\\mrt19\\source\\repos\\dietmanagementsystemshft\\dietmanagementsystemshft\\models\\responsemodels\\errorresponsemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7A3252DF-DDAB-41A5-9F20-68DD8261EB80}|DietManagementSystemSHFT\\DietManagementSystemSHFT.API.csproj|solutionrelative:dietmanagementsystemshft\\models\\responsemodels\\errorresponsemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD6AEB3F-A81E-4B69-89F4-0F4091F40856}|DietManagementSystem.Data\\DietManagementSystem.Data.csproj|c:\\users\\mrt19\\source\\repos\\dietmanagementsystemshft\\dietmanagementsystem.data\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD6AEB3F-A81E-4B69-89F4-0F4091F40856}|DietManagementSystem.Data\\DietManagementSystem.Data.csproj|solutionrelative:dietmanagementsystem.data\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD6AEB3F-A81E-4B69-89F4-0F4091F40856}|DietManagementSystem.Data\\DietManagementSystem.Data.csproj|c:\\users\\mrt19\\source\\repos\\dietmanagementsystemshft\\dietmanagementsystem.data\\enums\\role.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD6AEB3F-A81E-4B69-89F4-0F4091F40856}|DietManagementSystem.Data\\DietManagementSystem.Data.csproj|solutionrelative:dietmanagementsystem.data\\enums\\role.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7A3252DF-DDAB-41A5-9F20-68DD8261EB80}|DietManagementSystemSHFT\\DietManagementSystemSHFT.API.csproj|c:\\users\\mrt19\\source\\repos\\dietmanagementsystemshft\\dietmanagementsystemshft\\dietmanagementsystemshft.api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{7A3252DF-DDAB-41A5-9F20-68DD8261EB80}|DietManagementSystemSHFT\\DietManagementSystemSHFT.API.csproj|solutionrelative:dietmanagementsystemshft\\dietmanagementsystemshft.api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7A3252DF-DDAB-41A5-9F20-68DD8261EB80}|DietManagementSystemSHFT\\DietManagementSystemSHFT.API.csproj|c:\\users\\mrt19\\source\\repos\\dietmanagementsystemshft\\dietmanagementsystemshft\\exceptions\\appexception.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7A3252DF-DDAB-41A5-9F20-68DD8261EB80}|DietManagementSystemSHFT\\DietManagementSystemSHFT.API.csproj|solutionrelative:dietmanagementsystemshft\\exceptions\\appexception.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7A3252DF-DDAB-41A5-9F20-68DD8261EB80}|DietManagementSystemSHFT\\DietManagementSystemSHFT.API.csproj|c:\\users\\mrt19\\source\\repos\\dietmanagementsystemshft\\dietmanagementsystemshft\\exceptions\\badrequestexception.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7A3252DF-DDAB-41A5-9F20-68DD8261EB80}|DietManagementSystemSHFT\\DietManagementSystemSHFT.API.csproj|solutionrelative:dietmanagementsystemshft\\exceptions\\badrequestexception.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7A3252DF-DDAB-41A5-9F20-68DD8261EB80}|DietManagementSystemSHFT\\DietManagementSystemSHFT.API.csproj|c:\\users\\mrt19\\source\\repos\\dietmanagementsystemshft\\dietmanagementsystemshft\\exceptions\\notfoundexception.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7A3252DF-DDAB-41A5-9F20-68DD8261EB80}|DietManagementSystemSHFT\\DietManagementSystemSHFT.API.csproj|solutionrelative:dietmanagementsystemshft\\exceptions\\notfoundexception.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7A3252DF-DDAB-41A5-9F20-68DD8261EB80}|DietManagementSystemSHFT\\DietManagementSystemSHFT.API.csproj|c:\\users\\mrt19\\source\\repos\\dietmanagementsystemshft\\dietmanagementsystemshft\\exceptions\\unauthorizedexception.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7A3252DF-DDAB-41A5-9F20-68DD8261EB80}|DietManagementSystemSHFT\\DietManagementSystemSHFT.API.csproj|solutionrelative:dietmanagementsystemshft\\exceptions\\unauthorizedexception.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7A3252DF-DDAB-41A5-9F20-68DD8261EB80}|DietManagementSystemSHFT\\DietManagementSystemSHFT.API.csproj|c:\\users\\mrt19\\source\\repos\\dietmanagementsystemshft\\dietmanagementsystemshft\\exceptions\\forbiddenexception.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7A3252DF-DDAB-41A5-9F20-68DD8261EB80}|DietManagementSystemSHFT\\DietManagementSystemSHFT.API.csproj|solutionrelative:dietmanagementsystemshft\\exceptions\\forbiddenexception.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7A3252DF-DDAB-41A5-9F20-68DD8261EB80}|DietManagementSystemSHFT\\DietManagementSystemSHFT.API.csproj|c:\\users\\mrt19\\source\\repos\\dietmanagementsystemshft\\dietmanagementsystemshft\\exceptions\\conflictexception.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7A3252DF-DDAB-41A5-9F20-68DD8261EB80}|DietManagementSystemSHFT\\DietManagementSystemSHFT.API.csproj|solutionrelative:dietmanagementsystemshft\\exceptions\\conflictexception.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7A3252DF-DDAB-41A5-9F20-68DD8261EB80}|DietManagementSystemSHFT\\DietManagementSystemSHFT.API.csproj|c:\\users\\mrt19\\source\\repos\\dietmanagementsystemshft\\dietmanagementsystemshft\\exceptions\\validationexception.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7A3252DF-DDAB-41A5-9F20-68DD8261EB80}|DietManagementSystemSHFT\\DietManagementSystemSHFT.API.csproj|solutionrelative:dietmanagementsystemshft\\exceptions\\validationexception.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7A3252DF-DDAB-41A5-9F20-68DD8261EB80}|DietManagementSystemSHFT\\DietManagementSystemSHFT.API.csproj|c:\\users\\mrt19\\source\\repos\\dietmanagementsystemshft\\dietmanagementsystemshft\\validators\\clientrequestmodelvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7A3252DF-DDAB-41A5-9F20-68DD8261EB80}|DietManagementSystemSHFT\\DietManagementSystemSHFT.API.csproj|solutionrelative:dietmanagementsystemshft\\validators\\clientrequestmodelvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7A3252DF-DDAB-41A5-9F20-68DD8261EB80}|DietManagementSystemSHFT\\DietManagementSystemSHFT.API.csproj|c:\\users\\mrt19\\source\\repos\\dietmanagementsystemshft\\dietmanagementsystemshft\\validators\\refreshtokenrequestmodelvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7A3252DF-DDAB-41A5-9F20-68DD8261EB80}|DietManagementSystemSHFT\\DietManagementSystemSHFT.API.csproj|solutionrelative:dietmanagementsystemshft\\validators\\refreshtokenrequestmodelvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7A3252DF-DDAB-41A5-9F20-68DD8261EB80}|DietManagementSystemSHFT\\DietManagementSystemSHFT.API.csproj|c:\\users\\mrt19\\source\\repos\\dietmanagementsystemshft\\dietmanagementsystemshft\\validators\\clientprogressrequestmodelvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7A3252DF-DDAB-41A5-9F20-68DD8261EB80}|DietManagementSystemSHFT\\DietManagementSystemSHFT.API.csproj|solutionrelative:dietmanagementsystemshft\\validators\\clientprogressrequestmodelvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7A3252DF-DDAB-41A5-9F20-68DD8261EB80}|DietManagementSystemSHFT\\DietManagementSystemSHFT.API.csproj|c:\\users\\mrt19\\source\\repos\\dietmanagementsystemshft\\dietmanagementsystemshft\\models\\requestmodels\\registerrequestmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7A3252DF-DDAB-41A5-9F20-68DD8261EB80}|DietManagementSystemSHFT\\DietManagementSystemSHFT.API.csproj|solutionrelative:dietmanagementsystemshft\\models\\requestmodels\\registerrequestmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystem.Tests\\Controllers\\DietPlanControllerTests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:DietManagementSystem.Tests\\Controllers\\DietPlanControllerTests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystem.Tests\\Controllers\\DietitianControllerTests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:DietManagementSystem.Tests\\Controllers\\DietitianControllerTests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystem.Tests\\Controllers\\ClientProgressControllerTests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:DietManagementSystem.Tests\\Controllers\\ClientProgressControllerTests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystem.Tests\\CQRS\\Handlers\\MealHandlers\\CreateMealCommandHandlerTests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:DietManagementSystem.Tests\\CQRS\\Handlers\\MealHandlers\\CreateMealCommandHandlerTests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystem.Tests\\Validators\\MealRequestModelValidatorTests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:DietManagementSystem.Tests\\Validators\\MealRequestModelValidatorTests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystem.Tests\\Validators\\RegisterRequestModelValidatorTests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:DietManagementSystem.Tests\\Validators\\RegisterRequestModelValidatorTests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD6AEB3F-A81E-4B69-89F4-0F4091F40856}|DietManagementSystem.Data\\DietManagementSystem.Data.csproj|c:\\users\\mrt19\\source\\repos\\dietmanagementsystemshft\\dietmanagementsystem.data\\entities\\clientprogress.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD6AEB3F-A81E-4B69-89F4-0F4091F40856}|DietManagementSystem.Data\\DietManagementSystem.Data.csproj|solutionrelative:dietmanagementsystem.data\\entities\\clientprogress.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD6AEB3F-A81E-4B69-89F4-0F4091F40856}|DietManagementSystem.Data\\DietManagementSystem.Data.csproj|c:\\users\\mrt19\\source\\repos\\dietmanagementsystemshft\\dietmanagementsystem.data\\entities\\dietitian.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD6AEB3F-A81E-4B69-89F4-0F4091F40856}|DietManagementSystem.Data\\DietManagementSystem.Data.csproj|solutionrelative:dietmanagementsystem.data\\entities\\dietitian.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 6,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "RefreshToken.cs",
+              "DocumentMoniker": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystem.Data\\Entities\\RefreshToken.cs",
+              "RelativeDocumentMoniker": "DietManagementSystem.Data\\Entities\\RefreshToken.cs",
+              "ToolTip": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystem.Data\\Entities\\RefreshToken.cs",
+              "RelativeToolTip": "DietManagementSystem.Data\\Entities\\RefreshToken.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-18T12:44:56.816Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 58,
+              "Title": "Dietitian.cs",
+              "DocumentMoniker": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystem.Data\\Entities\\Dietitian.cs",
+              "RelativeDocumentMoniker": "DietManagementSystem.Data\\Entities\\Dietitian.cs",
+              "ToolTip": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystem.Data\\Entities\\Dietitian.cs",
+              "RelativeToolTip": "DietManagementSystem.Data\\Entities\\Dietitian.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAKBhwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-18T12:44:25.184Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "DeleteClientProgressCommandHandler.cs",
+              "DocumentMoniker": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystemSHFT\\CQRS\\Handlers\\ClientProgressHandlers\\DeleteClientProgressCommandHandler.cs",
+              "RelativeDocumentMoniker": "DietManagementSystemSHFT\\CQRS\\Handlers\\ClientProgressHandlers\\DeleteClientProgressCommandHandler.cs",
+              "ToolTip": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystemSHFT\\CQRS\\Handlers\\ClientProgressHandlers\\DeleteClientProgressCommandHandler.cs",
+              "RelativeToolTip": "DietManagementSystemSHFT\\CQRS\\Handlers\\ClientProgressHandlers\\DeleteClientProgressCommandHandler.cs",
+              "ViewState": "AgIAAEMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-18T12:43:22.889Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "UpdateClientProgressCommandHandler.cs",
+              "DocumentMoniker": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystemSHFT\\CQRS\\Handlers\\ClientProgressHandlers\\UpdateClientProgressCommandHandler.cs",
+              "RelativeDocumentMoniker": "DietManagementSystemSHFT\\CQRS\\Handlers\\ClientProgressHandlers\\UpdateClientProgressCommandHandler.cs",
+              "ToolTip": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystemSHFT\\CQRS\\Handlers\\ClientProgressHandlers\\UpdateClientProgressCommandHandler.cs",
+              "RelativeToolTip": "DietManagementSystemSHFT\\CQRS\\Handlers\\ClientProgressHandlers\\UpdateClientProgressCommandHandler.cs",
+              "ViewState": "AgIAAHsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-18T12:43:01.18Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "UpdateDietPlanCommandHandler.cs",
+              "DocumentMoniker": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystemSHFT\\CQRS\\Handlers\\DietPlanHandlers\\UpdateDietPlanCommandHandler.cs",
+              "RelativeDocumentMoniker": "DietManagementSystemSHFT\\CQRS\\Handlers\\DietPlanHandlers\\UpdateDietPlanCommandHandler.cs",
+              "ToolTip": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystemSHFT\\CQRS\\Handlers\\DietPlanHandlers\\UpdateDietPlanCommandHandler.cs",
+              "RelativeToolTip": "DietManagementSystemSHFT\\CQRS\\Handlers\\DietPlanHandlers\\UpdateDietPlanCommandHandler.cs",
+              "ViewState": "AgIAAFsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-18T12:42:35.833Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UpdateClientCommandHandler.cs",
+              "DocumentMoniker": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystemSHFT\\CQRS\\Handlers\\ClientHandlers\\UpdateClientCommandHandler.cs",
+              "RelativeDocumentMoniker": "DietManagementSystemSHFT\\CQRS\\Handlers\\ClientHandlers\\UpdateClientCommandHandler.cs",
+              "ToolTip": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystemSHFT\\CQRS\\Handlers\\ClientHandlers\\UpdateClientCommandHandler.cs",
+              "RelativeToolTip": "DietManagementSystemSHFT\\CQRS\\Handlers\\ClientHandlers\\UpdateClientCommandHandler.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAqwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-18T12:41:24.148Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "DeleteDietPlanCommandHandler.cs",
+              "DocumentMoniker": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystemSHFT\\CQRS\\Handlers\\DietPlanHandlers\\DeleteDietPlanCommandHandler.cs",
+              "RelativeDocumentMoniker": "DietManagementSystemSHFT\\CQRS\\Handlers\\DietPlanHandlers\\DeleteDietPlanCommandHandler.cs",
+              "ToolTip": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystemSHFT\\CQRS\\Handlers\\DietPlanHandlers\\DeleteDietPlanCommandHandler.cs",
+              "RelativeToolTip": "DietManagementSystemSHFT\\CQRS\\Handlers\\DietPlanHandlers\\DeleteDietPlanCommandHandler.cs",
+              "ViewState": "AgIAACIAAAAAAAAAAAASwDYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-18T12:40:44.963Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "UpdateMealCommandHandler.cs",
+              "DocumentMoniker": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystemSHFT\\CQRS\\Handlers\\MealHandlers\\UpdateMealCommandHandler.cs",
+              "RelativeDocumentMoniker": "DietManagementSystemSHFT\\CQRS\\Handlers\\MealHandlers\\UpdateMealCommandHandler.cs",
+              "ToolTip": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystemSHFT\\CQRS\\Handlers\\MealHandlers\\UpdateMealCommandHandler.cs",
+              "RelativeToolTip": "DietManagementSystemSHFT\\CQRS\\Handlers\\MealHandlers\\UpdateMealCommandHandler.cs",
+              "ViewState": "AgIAAFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-18T12:41:04.635Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Meal.cs",
+              "DocumentMoniker": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystem.Data\\Entities\\Meal.cs",
+              "RelativeDocumentMoniker": "DietManagementSystem.Data\\Entities\\Meal.cs",
+              "ToolTip": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystem.Data\\Entities\\Meal.cs",
+              "RelativeToolTip": "DietManagementSystem.Data\\Entities\\Meal.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-18T12:39:56.188Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 57,
+              "Title": "ClientProgress.cs",
+              "DocumentMoniker": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystem.Data\\Entities\\ClientProgress.cs",
+              "RelativeDocumentMoniker": "DietManagementSystem.Data\\Entities\\ClientProgress.cs",
+              "ToolTip": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystem.Data\\Entities\\ClientProgress.cs",
+              "RelativeToolTip": "DietManagementSystem.Data\\Entities\\ClientProgress.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAABgwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-18T12:39:43.987Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "DietPlan.cs",
+              "DocumentMoniker": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystem.Data\\Entities\\DietPlan.cs",
+              "RelativeDocumentMoniker": "DietManagementSystem.Data\\Entities\\DietPlan.cs",
+              "ToolTip": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystem.Data\\Entities\\DietPlan.cs",
+              "RelativeToolTip": "DietManagementSystem.Data\\Entities\\DietPlan.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-18T12:39:37.284Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Client.cs",
+              "DocumentMoniker": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystem.Data\\Entities\\Client.cs",
+              "RelativeDocumentMoniker": "DietManagementSystem.Data\\Entities\\Client.cs",
+              "ToolTip": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystem.Data\\Entities\\Client.cs",
+              "RelativeToolTip": "DietManagementSystem.Data\\Entities\\Client.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-18T12:39:28.213Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "MealControllerTests.cs",
+              "DocumentMoniker": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystem.Tests\\Controllers\\MealControllerTests.cs",
+              "RelativeDocumentMoniker": "DietManagementSystem.Tests\\Controllers\\MealControllerTests.cs",
+              "ToolTip": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystem.Tests\\Controllers\\MealControllerTests.cs",
+              "RelativeToolTip": "DietManagementSystem.Tests\\Controllers\\MealControllerTests.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-18T09:47:33.477Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "CreateDietPlanCommandHandlerTests.cs",
+              "DocumentMoniker": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystem.Tests\\CQRS\\Handlers\\DietPlanHandlers\\CreateDietPlanCommandHandlerTests.cs",
+              "RelativeDocumentMoniker": "DietManagementSystem.Tests\\CQRS\\Handlers\\DietPlanHandlers\\CreateDietPlanCommandHandlerTests.cs",
+              "ToolTip": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystem.Tests\\CQRS\\Handlers\\DietPlanHandlers\\CreateDietPlanCommandHandlerTests.cs",
+              "RelativeToolTip": "DietManagementSystem.Tests\\CQRS\\Handlers\\DietPlanHandlers\\CreateDietPlanCommandHandlerTests.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-18T09:46:42.48Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "DietManagementSystem.Tests.csproj",
+              "DocumentMoniker": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystem.Tests\\DietManagementSystem.Tests.csproj",
+              "RelativeDocumentMoniker": "DietManagementSystem.Tests\\DietManagementSystem.Tests.csproj",
+              "ToolTip": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystem.Tests\\DietManagementSystem.Tests.csproj",
+              "RelativeToolTip": "DietManagementSystem.Tests\\DietManagementSystem.Tests.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-08-18T09:46:05.992Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystemSHFT\\appsettings.json",
+              "RelativeDocumentMoniker": "DietManagementSystemSHFT\\appsettings.json",
+              "ToolTip": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystemSHFT\\appsettings.json",
+              "RelativeToolTip": "DietManagementSystemSHFT\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-08-17T19:12:13.311Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "appsettings.Development.json",
+              "DocumentMoniker": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystemSHFT\\appsettings.Development.json",
+              "RelativeDocumentMoniker": "DietManagementSystemSHFT\\appsettings.Development.json",
+              "ToolTip": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystemSHFT\\appsettings.Development.json",
+              "RelativeToolTip": "DietManagementSystemSHFT\\appsettings.Development.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-08-17T19:12:08.215Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "MealRequestModelValidator.cs",
+              "DocumentMoniker": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystemSHFT\\Validators\\MealRequestModelValidator.cs",
+              "RelativeDocumentMoniker": "DietManagementSystemSHFT\\Validators\\MealRequestModelValidator.cs",
+              "ToolTip": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystemSHFT\\Validators\\MealRequestModelValidator.cs",
+              "RelativeToolTip": "DietManagementSystemSHFT\\Validators\\MealRequestModelValidator.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-17T15:19:49.614Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "ValidationBehaviorTests.cs",
+              "DocumentMoniker": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystem.Tests\\Behaviors\\ValidationBehaviorTests.cs",
+              "RelativeDocumentMoniker": "DietManagementSystem.Tests\\Behaviors\\ValidationBehaviorTests.cs",
+              "ToolTip": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystem.Tests\\Behaviors\\ValidationBehaviorTests.cs",
+              "RelativeToolTip": "DietManagementSystem.Tests\\Behaviors\\ValidationBehaviorTests.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-18T09:50:56.7Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "DietPlanRequestModelValidatorTests.cs",
+              "DocumentMoniker": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystem.Tests\\Validators\\DietPlanRequestModelValidatorTests.cs",
+              "RelativeDocumentMoniker": "DietManagementSystem.Tests\\Validators\\DietPlanRequestModelValidatorTests.cs",
+              "ToolTip": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystem.Tests\\Validators\\DietPlanRequestModelValidatorTests.cs",
+              "RelativeToolTip": "DietManagementSystem.Tests\\Validators\\DietPlanRequestModelValidatorTests.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-18T09:52:04.319Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "CreateDietPlanCommandHandler.cs",
+              "DocumentMoniker": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystemSHFT\\CQRS\\Handlers\\DietPlanHandlers\\CreateDietPlanCommandHandler.cs",
+              "RelativeDocumentMoniker": "DietManagementSystemSHFT\\CQRS\\Handlers\\DietPlanHandlers\\CreateDietPlanCommandHandler.cs",
+              "ToolTip": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystemSHFT\\CQRS\\Handlers\\DietPlanHandlers\\CreateDietPlanCommandHandler.cs",
+              "RelativeToolTip": "DietManagementSystemSHFT\\CQRS\\Handlers\\DietPlanHandlers\\CreateDietPlanCommandHandler.cs",
+              "ViewState": "AgIAACQAAAAAAAAAAAAAAFYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-17T20:05:15.591Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 51,
+              "Title": "DietPlanControllerTests.cs",
+              "DocumentMoniker": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystem.Tests\\Controllers\\DietPlanControllerTests.cs",
+              "RelativeDocumentMoniker": "DietManagementSystem.Tests\\Controllers\\DietPlanControllerTests.cs",
+              "ToolTip": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystem.Tests\\Controllers\\DietPlanControllerTests.cs",
+              "RelativeToolTip": "DietManagementSystem.Tests\\Controllers\\DietPlanControllerTests.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAxwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-18T09:48:22.37Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 52,
+              "Title": "DietitianControllerTests.cs",
+              "DocumentMoniker": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystem.Tests\\Controllers\\DietitianControllerTests.cs",
+              "RelativeDocumentMoniker": "DietManagementSystem.Tests\\Controllers\\DietitianControllerTests.cs",
+              "ToolTip": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystem.Tests\\Controllers\\DietitianControllerTests.cs",
+              "RelativeToolTip": "DietManagementSystem.Tests\\Controllers\\DietitianControllerTests.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAxwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-18T09:49:09.598Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 53,
+              "Title": "ClientProgressControllerTests.cs",
+              "DocumentMoniker": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystem.Tests\\Controllers\\ClientProgressControllerTests.cs",
+              "RelativeDocumentMoniker": "DietManagementSystem.Tests\\Controllers\\ClientProgressControllerTests.cs",
+              "ToolTip": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystem.Tests\\Controllers\\ClientProgressControllerTests.cs",
+              "RelativeToolTip": "DietManagementSystem.Tests\\Controllers\\ClientProgressControllerTests.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAxwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-18T09:50:03.615Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 56,
+              "Title": "RegisterRequestModelValidatorTests.cs",
+              "DocumentMoniker": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystem.Tests\\Validators\\RegisterRequestModelValidatorTests.cs",
+              "RelativeDocumentMoniker": "DietManagementSystem.Tests\\Validators\\RegisterRequestModelValidatorTests.cs",
+              "ToolTip": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystem.Tests\\Validators\\RegisterRequestModelValidatorTests.cs",
+              "RelativeToolTip": "DietManagementSystem.Tests\\Validators\\RegisterRequestModelValidatorTests.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAxwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-18T09:51:41.479Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 55,
+              "Title": "MealRequestModelValidatorTests.cs",
+              "DocumentMoniker": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystem.Tests\\Validators\\MealRequestModelValidatorTests.cs",
+              "RelativeDocumentMoniker": "DietManagementSystem.Tests\\Validators\\MealRequestModelValidatorTests.cs",
+              "ToolTip": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystem.Tests\\Validators\\MealRequestModelValidatorTests.cs",
+              "RelativeToolTip": "DietManagementSystem.Tests\\Validators\\MealRequestModelValidatorTests.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAxwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-18T09:51:17.429Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 54,
+              "Title": "CreateMealCommandHandlerTests.cs",
+              "DocumentMoniker": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystem.Tests\\CQRS\\Handlers\\MealHandlers\\CreateMealCommandHandlerTests.cs",
+              "RelativeDocumentMoniker": "DietManagementSystem.Tests\\CQRS\\Handlers\\MealHandlers\\CreateMealCommandHandlerTests.cs",
+              "ToolTip": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystem.Tests\\CQRS\\Handlers\\MealHandlers\\CreateMealCommandHandlerTests.cs",
+              "RelativeToolTip": "DietManagementSystem.Tests\\CQRS\\Handlers\\MealHandlers\\CreateMealCommandHandlerTests.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAxwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-18T09:50:38.937Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystemSHFT\\Program.cs",
+              "RelativeDocumentMoniker": "DietManagementSystemSHFT\\Program.cs",
+              "ToolTip": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystemSHFT\\Program.cs",
+              "RelativeToolTip": "DietManagementSystemSHFT\\Program.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAADkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-17T15:05:48.366Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "DietitianController.cs",
+              "DocumentMoniker": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystemSHFT\\Controllers\\DietitianController.cs",
+              "RelativeDocumentMoniker": "DietManagementSystemSHFT\\Controllers\\DietitianController.cs",
+              "ToolTip": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystemSHFT\\Controllers\\DietitianController.cs",
+              "RelativeToolTip": "DietManagementSystemSHFT\\Controllers\\DietitianController.cs",
+              "ViewState": "AgIAAHoAAAAAAAAAAAASwIwAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-17T15:24:20.113Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "LoginRequestModelValidator.cs",
+              "DocumentMoniker": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystemSHFT\\Validators\\LoginRequestModelValidator.cs",
+              "RelativeDocumentMoniker": "DietManagementSystemSHFT\\Validators\\LoginRequestModelValidator.cs",
+              "ToolTip": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystemSHFT\\Validators\\LoginRequestModelValidator.cs",
+              "RelativeToolTip": "DietManagementSystemSHFT\\Validators\\LoginRequestModelValidator.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-17T15:19:06.057Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "ExceptionHandlingMiddleware.cs",
+              "DocumentMoniker": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystemSHFT\\Middleware\\ExceptionHandlingMiddleware.cs",
+              "RelativeDocumentMoniker": "DietManagementSystemSHFT\\Middleware\\ExceptionHandlingMiddleware.cs",
+              "ToolTip": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystemSHFT\\Middleware\\ExceptionHandlingMiddleware.cs",
+              "RelativeToolTip": "DietManagementSystemSHFT\\Middleware\\ExceptionHandlingMiddleware.cs",
+              "ViewState": "AgIAADEAAAAAAAAAAAAqwE4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-17T15:20:31.629Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystemSHFT\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "DietManagementSystemSHFT\\Controllers\\AuthController.cs",
+              "ToolTip": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystemSHFT\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "DietManagementSystemSHFT\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAC4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-17T15:27:32.507Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "ClientController.cs",
+              "DocumentMoniker": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystemSHFT\\Controllers\\ClientController.cs",
+              "RelativeDocumentMoniker": "DietManagementSystemSHFT\\Controllers\\ClientController.cs",
+              "ToolTip": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystemSHFT\\Controllers\\ClientController.cs",
+              "RelativeToolTip": "DietManagementSystemSHFT\\Controllers\\ClientController.cs",
+              "ViewState": "AgIAALwAAAAAAAAAAAAiwBQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-17T15:10:02.024Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "DietitianRequestModelValidator.cs",
+              "DocumentMoniker": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystemSHFT\\Validators\\DietitianRequestModelValidator.cs",
+              "RelativeDocumentMoniker": "DietManagementSystemSHFT\\Validators\\DietitianRequestModelValidator.cs",
+              "ToolTip": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystemSHFT\\Validators\\DietitianRequestModelValidator.cs",
+              "RelativeToolTip": "DietManagementSystemSHFT\\Validators\\DietitianRequestModelValidator.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAABPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-17T15:19:24.667Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "RegisterRequestModelValidator.cs",
+              "DocumentMoniker": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystemSHFT\\Validators\\RegisterRequestModelValidator.cs",
+              "RelativeDocumentMoniker": "DietManagementSystemSHFT\\Validators\\RegisterRequestModelValidator.cs",
+              "ToolTip": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystemSHFT\\Validators\\RegisterRequestModelValidator.cs",
+              "RelativeToolTip": "DietManagementSystemSHFT\\Validators\\RegisterRequestModelValidator.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACMAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-17T15:45:13.131Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "RegisterCommandHandler.cs",
+              "DocumentMoniker": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystemSHFT\\CQRS\\Handlers\\RegisterCommandHandler.cs",
+              "RelativeDocumentMoniker": "DietManagementSystemSHFT\\CQRS\\Handlers\\RegisterCommandHandler.cs",
+              "ToolTip": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystemSHFT\\CQRS\\Handlers\\RegisterCommandHandler.cs",
+              "RelativeToolTip": "DietManagementSystemSHFT\\CQRS\\Handlers\\RegisterCommandHandler.cs",
+              "ViewState": "AgIAACAAAAAAAAAAAAA2wDsAAABNAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-17T15:45:49.256Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "ValidationBehavior.cs",
+              "DocumentMoniker": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystemSHFT\\Behaviors\\ValidationBehavior.cs",
+              "RelativeDocumentMoniker": "DietManagementSystemSHFT\\Behaviors\\ValidationBehavior.cs",
+              "ToolTip": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystemSHFT\\Behaviors\\ValidationBehavior.cs",
+              "RelativeToolTip": "DietManagementSystemSHFT\\Behaviors\\ValidationBehavior.cs",
+              "ViewState": "AgIAAC8AAAAAAAAAAABBwBQAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-17T15:20:45.416Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "DietPlanController.cs",
+              "DocumentMoniker": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystemSHFT\\Controllers\\DietPlanController.cs",
+              "RelativeDocumentMoniker": "DietManagementSystemSHFT\\Controllers\\DietPlanController.cs",
+              "ToolTip": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystemSHFT\\Controllers\\DietPlanController.cs",
+              "RelativeToolTip": "DietManagementSystemSHFT\\Controllers\\DietPlanController.cs",
+              "ViewState": "AgIAABIBAAAAAAAAAAAiwBgAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-17T15:30:46.006Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "RegisterCommand.cs",
+              "DocumentMoniker": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystemSHFT\\CQRS\\Commands\\RegisterCommand.cs",
+              "RelativeDocumentMoniker": "DietManagementSystemSHFT\\CQRS\\Commands\\RegisterCommand.cs",
+              "ToolTip": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystemSHFT\\CQRS\\Commands\\RegisterCommand.cs",
+              "RelativeToolTip": "DietManagementSystemSHFT\\CQRS\\Commands\\RegisterCommand.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-17T15:45:23.177Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "UpdateDietitianCommandHandler.cs",
+              "DocumentMoniker": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystemSHFT\\CQRS\\Handlers\\DietitianHandlers\\UpdateDietitianCommandHandler.cs",
+              "RelativeDocumentMoniker": "DietManagementSystemSHFT\\CQRS\\Handlers\\DietitianHandlers\\UpdateDietitianCommandHandler.cs",
+              "ToolTip": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystemSHFT\\CQRS\\Handlers\\DietitianHandlers\\UpdateDietitianCommandHandler.cs",
+              "RelativeToolTip": "DietManagementSystemSHFT\\CQRS\\Handlers\\DietitianHandlers\\UpdateDietitianCommandHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACEAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-17T19:03:34.883Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "DietPlanRequestModelValidator.cs",
+              "DocumentMoniker": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystemSHFT\\Validators\\DietPlanRequestModelValidator.cs",
+              "RelativeDocumentMoniker": "DietManagementSystemSHFT\\Validators\\DietPlanRequestModelValidator.cs",
+              "ToolTip": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystemSHFT\\Validators\\DietPlanRequestModelValidator.cs",
+              "RelativeToolTip": "DietManagementSystemSHFT\\Validators\\DietPlanRequestModelValidator.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwBoAAABCAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-17T15:19:37.71Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "UserRequestModelValidator.cs",
+              "DocumentMoniker": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystemSHFT\\Validators\\UserRequestModelValidator.cs",
+              "RelativeDocumentMoniker": "DietManagementSystemSHFT\\Validators\\UserRequestModelValidator.cs",
+              "ToolTip": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystemSHFT\\Validators\\UserRequestModelValidator.cs",
+              "RelativeToolTip": "DietManagementSystemSHFT\\Validators\\UserRequestModelValidator.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-17T15:20:15.706Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "ClientProgressController.cs",
+              "DocumentMoniker": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystemSHFT\\Controllers\\ClientProgressController.cs",
+              "RelativeDocumentMoniker": "DietManagementSystemSHFT\\Controllers\\ClientProgressController.cs",
+              "ToolTip": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystemSHFT\\Controllers\\ClientProgressController.cs",
+              "RelativeToolTip": "DietManagementSystemSHFT\\Controllers\\ClientProgressController.cs",
+              "ViewState": "AgIAABIBAAAAAAAAAAAqwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-17T15:28:22.389Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "MealController.cs",
+              "DocumentMoniker": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystemSHFT\\Controllers\\MealController.cs",
+              "RelativeDocumentMoniker": "DietManagementSystemSHFT\\Controllers\\MealController.cs",
+              "ToolTip": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystemSHFT\\Controllers\\MealController.cs",
+              "RelativeToolTip": "DietManagementSystemSHFT\\Controllers\\MealController.cs",
+              "ViewState": "AgIAAEABAAAAAAAAAAAqwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-17T15:29:25.225Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 50,
+              "Title": "RegisterRequestModel.cs",
+              "DocumentMoniker": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystemSHFT\\Models\\RequestModels\\RegisterRequestModel.cs",
+              "RelativeDocumentMoniker": "DietManagementSystemSHFT\\Models\\RequestModels\\RegisterRequestModel.cs",
+              "ToolTip": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystemSHFT\\Models\\RequestModels\\RegisterRequestModel.cs",
+              "RelativeToolTip": "DietManagementSystemSHFT\\Models\\RequestModels\\RegisterRequestModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-17T15:45:01.13Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 47,
+              "Title": "ClientRequestModelValidator.cs",
+              "DocumentMoniker": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystemSHFT\\Validators\\ClientRequestModelValidator.cs",
+              "RelativeDocumentMoniker": "DietManagementSystemSHFT\\Validators\\ClientRequestModelValidator.cs",
+              "ToolTip": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystemSHFT\\Validators\\ClientRequestModelValidator.cs",
+              "RelativeToolTip": "DietManagementSystemSHFT\\Validators\\ClientRequestModelValidator.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-17T15:18:55.019Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 46,
+              "Title": "ValidationException.cs",
+              "DocumentMoniker": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystemSHFT\\Exceptions\\ValidationException.cs",
+              "RelativeDocumentMoniker": "DietManagementSystemSHFT\\Exceptions\\ValidationException.cs",
+              "ToolTip": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystemSHFT\\Exceptions\\ValidationException.cs",
+              "RelativeToolTip": "DietManagementSystemSHFT\\Exceptions\\ValidationException.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAEBVwBIAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-17T15:18:28.739Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 45,
+              "Title": "ConflictException.cs",
+              "DocumentMoniker": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystemSHFT\\Exceptions\\ConflictException.cs",
+              "RelativeDocumentMoniker": "DietManagementSystemSHFT\\Exceptions\\ConflictException.cs",
+              "ToolTip": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystemSHFT\\Exceptions\\ConflictException.cs",
+              "RelativeToolTip": "DietManagementSystemSHFT\\Exceptions\\ConflictException.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-17T15:18:23.286Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 44,
+              "Title": "ForbiddenException.cs",
+              "DocumentMoniker": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystemSHFT\\Exceptions\\ForbiddenException.cs",
+              "RelativeDocumentMoniker": "DietManagementSystemSHFT\\Exceptions\\ForbiddenException.cs",
+              "ToolTip": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystemSHFT\\Exceptions\\ForbiddenException.cs",
+              "RelativeToolTip": "DietManagementSystemSHFT\\Exceptions\\ForbiddenException.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-17T15:18:18.505Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 43,
+              "Title": "UnauthorizedException.cs",
+              "DocumentMoniker": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystemSHFT\\Exceptions\\UnauthorizedException.cs",
+              "RelativeDocumentMoniker": "DietManagementSystemSHFT\\Exceptions\\UnauthorizedException.cs",
+              "ToolTip": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystemSHFT\\Exceptions\\UnauthorizedException.cs",
+              "RelativeToolTip": "DietManagementSystemSHFT\\Exceptions\\UnauthorizedException.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-17T15:18:12.674Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 42,
+              "Title": "NotFoundException.cs",
+              "DocumentMoniker": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystemSHFT\\Exceptions\\NotFoundException.cs",
+              "RelativeDocumentMoniker": "DietManagementSystemSHFT\\Exceptions\\NotFoundException.cs",
+              "ToolTip": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystemSHFT\\Exceptions\\NotFoundException.cs",
+              "RelativeToolTip": "DietManagementSystemSHFT\\Exceptions\\NotFoundException.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAIBYwA4AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-17T15:18:06.895Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 41,
+              "Title": "BadRequestException.cs",
+              "DocumentMoniker": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystemSHFT\\Exceptions\\BadRequestException.cs",
+              "RelativeDocumentMoniker": "DietManagementSystemSHFT\\Exceptions\\BadRequestException.cs",
+              "ToolTip": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystemSHFT\\Exceptions\\BadRequestException.cs",
+              "RelativeToolTip": "DietManagementSystemSHFT\\Exceptions\\BadRequestException.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAIBYwA4AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-17T15:18:02.565Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 40,
+              "Title": "AppException.cs",
+              "DocumentMoniker": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystemSHFT\\Exceptions\\AppException.cs",
+              "RelativeDocumentMoniker": "DietManagementSystemSHFT\\Exceptions\\AppException.cs",
+              "ToolTip": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystemSHFT\\Exceptions\\AppException.cs",
+              "RelativeToolTip": "DietManagementSystemSHFT\\Exceptions\\AppException.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAEBVwA0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-17T15:17:58.47Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 49,
+              "Title": "ClientProgressRequestModelValidator.cs",
+              "DocumentMoniker": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystemSHFT\\Validators\\ClientProgressRequestModelValidator.cs",
+              "RelativeDocumentMoniker": "DietManagementSystemSHFT\\Validators\\ClientProgressRequestModelValidator.cs",
+              "ToolTip": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystemSHFT\\Validators\\ClientProgressRequestModelValidator.cs",
+              "RelativeToolTip": "DietManagementSystemSHFT\\Validators\\ClientProgressRequestModelValidator.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-17T15:20:05.591Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 48,
+              "Title": "RefreshTokenRequestModelValidator.cs",
+              "DocumentMoniker": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystemSHFT\\Validators\\RefreshTokenRequestModelValidator.cs",
+              "RelativeDocumentMoniker": "DietManagementSystemSHFT\\Validators\\RefreshTokenRequestModelValidator.cs",
+              "ToolTip": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystemSHFT\\Validators\\RefreshTokenRequestModelValidator.cs",
+              "RelativeToolTip": "DietManagementSystemSHFT\\Validators\\RefreshTokenRequestModelValidator.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-17T15:19:14.835Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "ErrorResponseModel.cs",
+              "DocumentMoniker": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystemSHFT\\Models\\ResponseModels\\ErrorResponseModel.cs",
+              "RelativeDocumentMoniker": "DietManagementSystemSHFT\\Models\\ResponseModels\\ErrorResponseModel.cs",
+              "ToolTip": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystemSHFT\\Models\\ResponseModels\\ErrorResponseModel.cs",
+              "RelativeToolTip": "DietManagementSystemSHFT\\Models\\ResponseModels\\ErrorResponseModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-17T15:13:33.414Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 39,
+              "Title": "DietManagementSystemSHFT.API.csproj",
+              "DocumentMoniker": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystemSHFT\\DietManagementSystemSHFT.API.csproj",
+              "RelativeDocumentMoniker": "DietManagementSystemSHFT\\DietManagementSystemSHFT.API.csproj",
+              "ToolTip": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystemSHFT\\DietManagementSystemSHFT.API.csproj",
+              "RelativeToolTip": "DietManagementSystemSHFT\\DietManagementSystemSHFT.API.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAMBdwCAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-08-17T15:06:04.994Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 37,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystem.Data\\Entities\\User.cs",
+              "RelativeDocumentMoniker": "DietManagementSystem.Data\\Entities\\User.cs",
+              "ToolTip": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystem.Data\\Entities\\User.cs",
+              "RelativeToolTip": "DietManagementSystem.Data\\Entities\\User.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAIBYwA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-16T17:22:23.527Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 38,
+              "Title": "Role.cs",
+              "DocumentMoniker": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystem.Data\\Enums\\Role.cs",
+              "RelativeDocumentMoniker": "DietManagementSystem.Data\\Enums\\Role.cs",
+              "ToolTip": "C:\\Users\\mrt19\\source\\repos\\DietManagementSystemSHFT\\DietManagementSystem.Data\\Enums\\Role.cs",
+              "RelativeToolTip": "DietManagementSystem.Data\\Enums\\Role.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-16T17:25:47.778Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

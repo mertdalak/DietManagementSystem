@@ -1,0 +1,131 @@
+using System.Net;
+using System.Text.Json;
+using DietManagementSystemSHFT.API.Models.ResponseModels;
+using DietManagementSystemSHFT.Exceptions;
+using FluentValidation;
+using Serilog;
+using ILogger = Microsoft.Extensions.Logging.ILogger;
+
+namespace DietManagementSystemSHFT.Middleware
+{
+    public class ExceptionHandlingMiddleware
+    {
+        private readonly RequestDelegate _next;
+        private readonly ILogger<ExceptionHandlingMiddleware> _logger;
+        private readonly IWebHostEnvironment _environment;
+
+        public ExceptionHandlingMiddleware(
+            RequestDelegate next,
+            ILogger<ExceptionHandlingMiddleware> logger,
+            IWebHostEnvironment environment)
+        {
+            _next = next;
+            _logger = logger;
+            _environment = environment;
+        }
+
+        public async Task InvokeAsync(HttpContext context)
+        {
+            try
+            {
+                await _next(context);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "An unhandled exception occurred: {Message}", ex.Message);
+                await HandleExceptionAsync(context, ex);
+            }
+        }
+
+        private async Task HandleExceptionAsync(HttpContext context, Exception exception)
+        {
+            context.Response.ContentType = "application/json";
+            
+            var errorResponse = new ErrorResponseModel
+            {
+                Message = "An error occurred while processing your request."
+            };
+
+            switch (exception)
+            {
+                case FluentValidation.ValidationException validationEx:
+                    context.Response.StatusCode = (int)HttpStatusCode.BadRequest;
+                    errorResponse.Message = "Validation failed";
+                    errorResponse.ErrorCode = "ValidationError";
+                    errorResponse.Details = validationEx.Errors.Select(e => new { Property = e.PropertyName, Error = e.ErrorMessage });
+                    Log.Information("Validation error: {ValidationErrors}", JsonSerializer.Serialize(validationEx.Errors));
+                    break;
+                
+                case DietManagementSystemSHFT.Exceptions.ValidationException appValidationEx:
+                    context.Response.StatusCode = (int)HttpStatusCode.BadRequest;
+                    errorResponse.Message = appValidationEx.Message;
+                    errorResponse.ErrorCode = appValidationEx.ErrorCode;
+                    errorResponse.Details = appValidationEx.Errors;
+                    Log.Information("Application validation error: {ValidationErrors}", JsonSerializer.Serialize(appValidationEx.Errors));
+                    break;
+                
+                case BadRequestException badRequestEx:
+                    context.Response.StatusCode = (int)HttpStatusCode.BadRequest;
+                    errorResponse.Message = badRequestEx.Message;
+                    errorResponse.ErrorCode = badRequestEx.ErrorCode;
+                    Log.Information("Bad request error: {Message}", badRequestEx.Message);
+                    break;
+                
+                case NotFoundException notFoundEx:
+                    context.Response.StatusCode = (int)HttpStatusCode.NotFound;
+                    errorResponse.Message = notFoundEx.Message;
+                    errorResponse.ErrorCode = notFoundEx.ErrorCode;
+                    Log.Information("Not found error: {Message}", notFoundEx.Message);
+                    break;
+                
+                case UnauthorizedException unauthorizedEx:
+                    context.Response.StatusCode = (int)HttpStatusCode.Unauthorized;
+                    errorResponse.Message = unauthorizedEx.Message;
+                    errorResponse.ErrorCode = unauthorizedEx.ErrorCode;
+                    Log.Information("Unauthorized error: {Message}", unauthorizedEx.Message);
+                    break;
+                
+                case ForbiddenException forbiddenEx:
+                    context.Response.StatusCode = (int)HttpStatusCode.Forbidden;
+                    errorResponse.Message = forbiddenEx.Message;
+                    errorResponse.ErrorCode = forbiddenEx.ErrorCode;
+                    Log.Information("Forbidden error: {Message}", forbiddenEx.Message);
+                    break;
+                
+                case ConflictException conflictEx:
+                    context.Response.StatusCode = (int)HttpStatusCode.Conflict;
+                    errorResponse.Message = conflictEx.Message;
+                    errorResponse.ErrorCode = conflictEx.ErrorCode;
+                    Log.Information("Conflict error: {Message}", conflictEx.Message);
+                    break;
+                
+                default:
+                    context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+                    Log.Error(exception, "Unhandled exception: {Message}", exception.Message);
+                    
+                    // Only include stack trace in development environment
+                    if (_environment.IsDevelopment())
+                    {
+                        errorResponse.StackTrace = exception.StackTrace;
+                    }
+                    break;
+            }
+
+            var jsonOptions = new JsonSerializerOptions
+            {
+                PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+            };
+            
+            await context.Response.WriteAsync(JsonSerializer.Serialize(errorResponse, jsonOptions));
+        }
+    }
+
+    // Extension method for middleware registration
+    public static class ExceptionHandlingMiddlewareExtensions
+    {
+        public static IApplicationBuilder UseExceptionHandling(this IApplicationBuilder builder)
+        {
+            return builder.UseMiddleware<ExceptionHandlingMiddleware>();
+        }
+    }
+}

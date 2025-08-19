@@ -1,0 +1,15 @@
+using System;
+
+namespace DietManagementSystemSHFT.Exceptions
+{
+    public class NotFoundException : AppException
+    {
+        public NotFoundException(string message) : base(message)
+        {
+        }
+
+        public NotFoundException(string message, string errorCode) : base(message, errorCode)
+        {
+        }
+    }
+}

@@ -1,0 +1,22 @@
+﻿using FluentValidation;
+using DietManagementSystemSHFT.Models.RequestModels;
+
+namespace DietManagementSystemSHFT.Models.Validators
+{
+    public class DietitianRequestModelValidator : AbstractValidator<DietitianRequestModel>
+    {
+        public DietitianRequestModelValidator()
+        {
+            RuleFor(x => x.FullName)
+                .NotEmpty().WithMessage("Full name is required")
+                .MaximumLength(100).WithMessage("Full name must not exceed 100 characters");
+
+            RuleFor(x => x.Specialization)
+                .NotEmpty().WithMessage("Specialization is required")
+                .MaximumLength(100).WithMessage("Specialization must not exceed 100 characters");
+
+            RuleFor(x => x.UserId)
+                .NotEmpty().WithMessage("User ID is required");
+        }
+    }
+}

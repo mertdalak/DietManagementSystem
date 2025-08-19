@@ -1,0 +1,27 @@
+﻿using DietManagementSystemSHFT.Data;
+using DietManagementSystemSHFT.Interfaces;
+using DietManagementSystemSHFT.Models;
+
+namespace DietManagementSystemSHFT.Services
+{
+    public class ClientService : IClientService
+    {
+
+        ClientContext _context;
+        public ClientService(ClientContext context)
+        {
+            _context = context;
+        }
+        public IEnumerable<Client> GetClients()
+        {
+            return _context.Clients.ToList();
+        }
+
+        public Client PostClient(Client client)
+        {
+            _context.Clients.Add(client);
+            _context.SaveChangesAsync();
+            return client;
+        }
+    }
+}

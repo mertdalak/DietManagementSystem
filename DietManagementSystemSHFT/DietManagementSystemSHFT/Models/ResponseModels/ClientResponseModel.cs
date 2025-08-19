@@ -1,0 +1,12 @@
+using DietManagementSystemSHFT.Entities;
+
+namespace DietManagementSystemSHFT.Models.ResponseModels
+{
+    public class ClientResponseModel : BaseEntity
+    {
+        public string FullName { get; set; } = string.Empty;
+        public double InitialWeight { get; set; }
+        public double? CurrentWeight { get; set; }
+        public Guid DietitianId { get; set; }
+    }
+}

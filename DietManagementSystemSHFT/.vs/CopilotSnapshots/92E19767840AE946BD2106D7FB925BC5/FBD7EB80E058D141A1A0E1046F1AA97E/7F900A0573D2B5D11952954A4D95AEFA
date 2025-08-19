@@ -1,0 +1,14 @@
+﻿using DietManagementSystemSHFT.Enums;
+using Microsoft.AspNetCore.Identity;
+
+namespace DietManagementSystemSHFT.Entities
+{
+    public class User : IdentityUser<Guid>
+    {
+        public string FullName { get; set; } = string.Empty;
+        public Role Role { get; set; } = Role.Dietitian;
+
+        // Navigation
+        public Dietitian? DietitianProfile { get; set; }
+    }
+}

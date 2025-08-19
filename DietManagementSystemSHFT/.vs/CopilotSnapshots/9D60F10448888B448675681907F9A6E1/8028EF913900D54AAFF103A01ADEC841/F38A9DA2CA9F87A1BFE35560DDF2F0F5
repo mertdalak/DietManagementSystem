@@ -1,0 +1,39 @@
+﻿using FluentValidation;
+using DietManagementSystemSHFT.API.CQRS.Commands.ClientProgressCommands;
+
+namespace DietManagementSystemSHFT.CQRS.Validators
+{
+    public class UpdateClientProgressCommandValidator : AbstractValidator<UpdateClientProgressCommand>
+    {
+        public UpdateClientProgressCommandValidator()
+        {
+            RuleFor(x => x.Id)
+                .NotEmpty().WithMessage("Client progress ID is required");
+                
+            RuleFor(x => x.RecordDate)
+                .NotEmpty().WithMessage("Record date is required")
+                .LessThanOrEqualTo(DateTime.Now).WithMessage("Record date cannot be in the future");
+
+            RuleFor(x => x.Weight)
+                .GreaterThan(0).WithMessage("Weight must be greater than 0");
+
+            RuleFor(x => x.BodyFatPercentage)
+                .InclusiveBetween(1, 50).WithMessage("Body fat percentage must be between 1% and 50%")
+                .When(x => x.BodyFatPercentage.HasValue);
+
+            RuleFor(x => x.MuscleMass)
+                .GreaterThan(0).WithMessage("Muscle mass must be greater than 0")
+                .When(x => x.MuscleMass.HasValue);
+
+            RuleFor(x => x.Notes)
+                .MaximumLength(500).WithMessage("Notes must not exceed 500 characters")
+                .When(x => !string.IsNullOrEmpty(x.Notes));
+
+            RuleFor(x => x.ClientId)
+                .NotEmpty().WithMessage("Client ID is required");
+
+            RuleFor(x => x.DietitianId)
+                .NotEmpty().WithMessage("Dietitian ID is required");
+        }
+    }
+}

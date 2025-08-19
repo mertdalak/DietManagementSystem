@@ -1,0 +1,23 @@
+﻿using DietManagementSystemSHFT.Data;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Design;
+using Microsoft.Extensions.Configuration;
+using System;
+using System.IO;
+
+namespace DietManagementSystem.Data
+{
+    public class DesignTimeDbContextFactory : IDesignTimeDbContextFactory<DietManagementDbContext>
+    {
+        public DietManagementDbContext CreateDbContext(string[] args)
+        {
+            var builder = new DbContextOptionsBuilder<DietManagementDbContext>();
+            
+            var connectionString = "Server=MERT\\SQLEXPRESS;Database=DietManagementSystem;Trusted_Connection=True;TrustServerCertificate=True;MultipleActiveResultSets=true";
+            
+            builder.UseSqlServer(connectionString);
+
+            return new DietManagementDbContext(builder.Options);
+        }
+    }
+}

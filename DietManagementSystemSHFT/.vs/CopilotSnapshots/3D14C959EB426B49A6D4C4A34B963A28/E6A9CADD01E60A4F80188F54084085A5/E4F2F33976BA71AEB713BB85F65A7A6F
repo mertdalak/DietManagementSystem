@@ -1,0 +1,41 @@
+﻿using MediatR;
+using Microsoft.EntityFrameworkCore;
+using DietManagementSystemSHFT.Data;
+using DietManagementSystemSHFT.API.Models.ResponseModels;
+using DietManagementSystemSHFT.API.CQRS.Commands.ClientCommands;
+using DietManagementSystemSHFT.Exceptions;
+
+namespace DietManagementSystemSHFT.API.CQRS.Handlers.ClientHandlers
+{
+    public class DeleteClientCommandHandler : IRequestHandler<DeleteClientCommand, BaseResponseModel>
+    {
+        private readonly DietManagementDbContext _dbContext;
+
+        public DeleteClientCommandHandler(DietManagementDbContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
+
+        public async Task<BaseResponseModel> Handle(DeleteClientCommand request, CancellationToken cancellationToken)
+        {
+            var client = await _dbContext.Clients
+                .FirstOrDefaultAsync(c => c.Id == request.Id && !c.IsDeleted, cancellationToken);
+
+            if (client == null)
+            {
+                throw new NotFoundException($"Client with ID {request.Id} was not found");
+            }
+
+            client.IsDeleted = true;
+            client.DeletedAt = DateTime.UtcNow;
+
+            await _dbContext.SaveChangesAsync(cancellationToken);
+
+            return new BaseResponseModel
+            {
+                IsSuccess = true,
+                Message = "Client deleted successfully"
+            };
+        }
+    }
+}

@@ -1,0 +1,56 @@
+﻿using MediatR;
+using Microsoft.EntityFrameworkCore;
+using DietManagementSystemSHFT.Data;
+using DietManagementSystemSHFT.API.Models.ResponseModels;
+using DietManagementSystemSHFT.API.CQRS.Commands.DietPlanCommands;
+
+namespace DietManagementSystemSHFT.API.CQRS.Handlers.DietPlanHandlers
+{
+    public class DeleteDietPlanCommandHandler : IRequestHandler<DeleteDietPlanCommand, BaseResponseModel>
+    {
+        private readonly DietManagementDbContext _dbContext;
+
+        public DeleteDietPlanCommandHandler(DietManagementDbContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
+
+        public async Task<BaseResponseModel> Handle(DeleteDietPlanCommand request, CancellationToken cancellationToken)
+        {
+            var dietPlan = await _dbContext.DietPlans
+                .Where(dp => dp.Id == request.Id && !dp.IsDeleted)
+                .FirstOrDefaultAsync(cancellationToken);
+                
+            if (dietPlan == null)
+            {
+                return new BaseResponseModel
+                {
+                    IsSuccess = false,
+                    Message = "Diet plan not found"
+                };
+            }
+
+            dietPlan.IsDeleted = true;
+            dietPlan.DeletedAt = DateTime.UtcNow;
+
+            // Also mark all associated meals as deleted
+            var meals = await _dbContext.Meals
+                .Where(m => m.DietPlanId == request.Id && !m.IsDeleted)
+                .ToListAsync(cancellationToken);
+
+            foreach (var meal in meals)
+            {
+                meal.IsDeleted = true;
+                meal.DeletedAt = DateTime.UtcNow;
+            }
+
+            await _dbContext.SaveChangesAsync(cancellationToken);
+
+            return new BaseResponseModel
+            {
+                IsSuccess = true,
+                Message = "Diet plan deleted successfully"
+            };
+        }
+    }
+}

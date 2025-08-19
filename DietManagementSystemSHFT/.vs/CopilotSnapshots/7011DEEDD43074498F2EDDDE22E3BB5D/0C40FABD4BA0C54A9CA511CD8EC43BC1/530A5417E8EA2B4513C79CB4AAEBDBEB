@@ -1,0 +1,25 @@
+﻿using FluentValidation;
+using DietManagementSystemSHFT.Models.RequestModels;
+
+namespace DietManagementSystemSHFT.Models.Validators
+{
+    public class UserRequestModelValidator : AbstractValidator<UserRequestModel>
+    {
+        public UserRequestModelValidator()
+        {
+            RuleFor(x => x.FullName)
+                .NotEmpty().WithMessage("Full name is required")
+                .MaximumLength(100).WithMessage("Full name must not exceed 100 characters");
+
+            RuleFor(x => x.Email)
+                .NotEmpty().WithMessage("Email is required")
+                .EmailAddress().WithMessage("A valid email address is required");
+
+            RuleFor(x => x.Role)
+                .Must(role => string.IsNullOrEmpty(role) || 
+                       role == "Admin" || 
+                       role == "Dietitian")
+                .WithMessage("Role must be either 'Admin' or 'Dietitian'");
+        }
+    }
+}

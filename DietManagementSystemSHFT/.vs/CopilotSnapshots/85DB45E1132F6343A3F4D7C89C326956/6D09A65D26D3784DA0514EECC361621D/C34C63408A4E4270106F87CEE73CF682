@@ -1,0 +1,141 @@
+﻿using MediatR;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
+using DietManagementSystemSHFT.Models.RequestModels;
+using DietManagementSystem.Data.Enums;
+using DietManagementSystemSHFT.API.CQRS.Commands.DietitianCommands;
+using DietManagementSystemSHFT.API.CQRS.Queries.DietitanQueries;
+using DietManagementSystemSHFT.Exceptions;
+using Serilog;
+
+namespace DietManagementSystemSHFT.Controllers
+{
+    [ApiController]
+    [Route("api/[controller]")]
+    [Authorize]
+    public class DietitianController : ControllerBase
+    {
+        private readonly IMediator _mediator;
+
+        public DietitianController(IMediator mediator)
+        {
+            _mediator = mediator;
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> Create([FromBody] DietitianRequestModel request)
+        {
+            Log.Information("Creating a new dietitian");
+            
+            var command = CreateDietitianCommand.FromRequest(request);
+            var result = await _mediator.Send(command);
+
+            return Ok(result);
+        }
+
+        [HttpPut("{id}")]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> Update(Guid id, [FromBody] DietitianRequestModel request)
+        {
+            Log.Information("Updating dietitian with ID: {DietitianId}", id);
+            
+            // Check if dietitian exists
+            var dietitianExists = await _mediator.Send(new GetDietitianByIdQuery(id));
+            if (dietitianExists == null)
+            {
+                throw new NotFoundException($"Dietitian with ID {id} not found");
+            }
+            
+            var command = UpdateDietitianCommand.FromRequest(id, request);
+            var result = await _mediator.Send(command);
+
+            return Ok(result);
+        }
+
+        [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            Log.Information("Deleting dietitian with ID: {DietitianId}", id);
+            
+            // Check if dietitian exists
+            var dietitianExists = await _mediator.Send(new GetDietitianByIdQuery(id));
+            if (dietitianExists == null)
+            {
+                throw new NotFoundException($"Dietitian with ID {id} not found");
+            }
+            
+            var command = new DeleteDietitianCommand(id);
+            var result = await _mediator.Send(command);
+
+            return Ok(result);
+        }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetById(Guid id)
+        {
+            Log.Information("Getting dietitian with ID: {DietitianId}", id);
+            
+            // Check if user is admin or the dietitian themselves
+            var userRole = User.FindFirstValue("role");
+            var userIdClaim = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            
+            if (string.IsNullOrEmpty(userIdClaim) || !Guid.TryParse(userIdClaim, out var userId))
+            {
+                throw new UnauthorizedException("Invalid user authentication");
+            }
+
+            // Get the dietitian record to check if the user is the owner
+            var dietitianToCheck = await _mediator.Send(new GetDietitianByIdQuery(id));
+            if (dietitianToCheck == null)
+            {
+                throw new NotFoundException($"Dietitian with ID {id} not found");
+            }
+            
+            // If not admin and not the owner, return unauthorized
+            if (userRole != Role.Admin.ToString() && dietitianToCheck.UserId != userId)
+            {
+                throw new ForbiddenException("You don't have permission to view this dietitian profile");
+            }
+
+            return Ok(dietitianToCheck);
+        }
+
+        [HttpGet]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> GetAll()
+        {
+            Log.Information("Getting all dietitians");
+            
+            var dietitians = await _mediator.Send(new GetAllDietitiansQuery());
+            return Ok(dietitians);
+        }
+
+        [HttpGet("profile")]
+        [Authorize(Roles = "Dietitian")]
+        public async Task<IActionResult> GetOwnProfile()
+        {
+            Log.Information("Dietitian retrieving own profile");
+            
+            var userIdClaim = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            
+            if (string.IsNullOrEmpty(userIdClaim) || !Guid.TryParse(userIdClaim, out var userId))
+            {
+                throw new UnauthorizedException("Invalid user authentication");
+            }
+
+            // Query the database to find the dietitian profile for this user
+            var dietitians = await _mediator.Send(new GetAllDietitiansQuery());
+            var dietitian = dietitians.FirstOrDefault(d => d.UserId == userId);
+            
+            if (dietitian == null)
+            {
+                throw new NotFoundException("No dietitian profile found for this user");
+            }
+
+            return Ok(dietitian);
+        }
+    }
+}}

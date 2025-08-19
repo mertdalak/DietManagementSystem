@@ -1,0 +1,17 @@
+﻿using System;
+
+namespace DietManagementSystemSHFT.Exceptions
+{
+    /// <summary>
+    /// Base exception class for application-specific exceptions
+    /// </summary>
+    public abstract class AppException : Exception
+    {
+        public string ErrorCode { get; }
+        
+        protected AppException(string message, string errorCode = null) : base(message)
+        {
+            ErrorCode = errorCode ?? GetType().Name;
+        }
+    }
+}

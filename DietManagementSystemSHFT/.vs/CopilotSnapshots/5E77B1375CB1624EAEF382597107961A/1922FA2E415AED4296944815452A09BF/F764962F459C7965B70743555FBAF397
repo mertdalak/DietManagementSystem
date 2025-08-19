@@ -1,0 +1,11 @@
+﻿using DietManagementSystemSHFT.Models;
+
+namespace DietManagementSystemSHFT.Interfaces
+{
+    public interface IClientService
+    {
+        public IEnumerable<Client> GetClients();
+
+        public Client PostClient(Client client);
+    }
+}

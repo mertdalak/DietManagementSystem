@@ -1,0 +1,17 @@
+﻿namespace DietManagementSystemSHFT.Entities
+{
+    public class Dietitian : BaseEntity
+    {
+        public string FullName { get; set; } = string.Empty;
+        public string Specialization { get; set; } = string.Empty;
+
+        // Foreign Key -> User
+        public Guid UserId { get; set; }
+        public User? User { get; set; }
+
+        // Navigation
+        public ICollection<Client>? Clients { get; set; }
+        public ICollection<DietPlan>? DietPlans { get; set; }
+        public ICollection<ClientProgress>? ProgressRecords { get; set; }
+    }
+}

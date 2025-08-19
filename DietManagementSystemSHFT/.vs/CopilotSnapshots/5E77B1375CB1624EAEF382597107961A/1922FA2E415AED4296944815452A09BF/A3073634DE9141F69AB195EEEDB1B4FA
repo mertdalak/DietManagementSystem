@@ -1,0 +1,18 @@
+﻿namespace DietManagementSystemSHFT.Entities
+{
+    public class Client
+    {
+        public Guid Id { get; set; }
+        public string FullName { get; set; } = string.Empty;
+        public double InitialWeight { get; set; }
+        public double? CurrentWeight { get; set; }
+
+        // Foreign Key -> Dietitian
+        public Guid DietitianId { get; set; }
+        public Dietitian? Dietitian { get; set; }
+
+        // Navigation
+        public ICollection<DietPlan>? DietPlans { get; set; }
+        public ICollection<ClientProgress>? ProgressRecords { get; set; }
+    }
+}

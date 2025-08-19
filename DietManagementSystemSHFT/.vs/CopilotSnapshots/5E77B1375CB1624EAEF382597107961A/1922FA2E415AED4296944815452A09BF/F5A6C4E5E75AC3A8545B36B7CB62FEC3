@@ -1,0 +1,15 @@
+﻿namespace DietManagementSystemSHFT.Entities
+{
+    public class Meal
+    {
+        public Guid Id { get; set; }
+        public string Title { get; set; } = string.Empty;
+        public DateTime StartTime { get; set; }
+        public DateTime EndTime { get; set; }
+        public string Contents { get; set; } = string.Empty; // Örn: "150g Tavuk, 100g Pirinç"
+
+        // Foreign Key -> DietPlan
+        public Guid DietPlanId { get; set; }
+        public DietPlan? DietPlan { get; set; }
+    }
+}

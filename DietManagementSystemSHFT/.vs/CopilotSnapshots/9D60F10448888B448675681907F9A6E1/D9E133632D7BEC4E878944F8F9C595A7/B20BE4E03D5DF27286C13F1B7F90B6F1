@@ -1,0 +1,14 @@
+﻿using FluentValidation;
+using DietManagementSystemSHFT.CQRS.Commands;
+
+namespace DietManagementSystemSHFT.CQRS.Validators
+{
+    public class RefreshTokenCommandValidator : AbstractValidator<RefreshTokenCommand>
+    {
+        public RefreshTokenCommandValidator()
+        {
+            RuleFor(x => x.RefreshToken)
+                .NotEmpty().WithMessage("Refresh token is required");
+        }
+    }
+}

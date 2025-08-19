@@ -1,0 +1,58 @@
+﻿using MediatR;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
+using DietManagementSystemSHFT.CQRS.Commands;
+using DietManagementSystemSHFT.Models.RequestModels;
+using DietManagementSystemSHFT.Exceptions;
+
+namespace DietManagementSystemSHFT.Controllers
+{
+    [ApiController]
+    [Route("api/[controller]")]
+    public class AuthController : ControllerBase
+    {
+        private readonly IMediator _mediator;
+
+        public AuthController(IMediator mediator)
+        {
+            _mediator = mediator;
+        }
+
+        [HttpPost("login")]
+        public async Task<IActionResult> Login([FromBody] LoginRequestModel request)
+        {
+            var command = LoginCommand.FromRequest(request);
+            var result = await _mediator.Send(command);
+
+            // Note: LoginCommand handler should throw UnauthorizedException for invalid credentials
+            return Ok(result);
+        }
+
+        [HttpPost("refresh")]
+        public async Task<IActionResult> RefreshToken([FromBody] RefreshTokenRequestModel request)
+        {
+            var command = RefreshTokenCommand.FromRequest(request);
+            var result = await _mediator.Send(command);
+
+            // Note: RefreshTokenCommand handler should throw UnauthorizedException for invalid tokens
+            return Ok(result);
+        }
+
+        [Authorize]
+        [HttpPost("logout")]
+        public async Task<IActionResult> Logout()
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (string.IsNullOrEmpty(userId) || !Guid.TryParse(userId, out var parsedUserId))
+            {
+                throw new UnauthorizedException("Invalid user authentication");
+            }
+
+            var command = new LogoutCommand(parsedUserId);
+            var result = await _mediator.Send(command);
+
+            return Ok(new { Success = result });
+        }
+    }
+}

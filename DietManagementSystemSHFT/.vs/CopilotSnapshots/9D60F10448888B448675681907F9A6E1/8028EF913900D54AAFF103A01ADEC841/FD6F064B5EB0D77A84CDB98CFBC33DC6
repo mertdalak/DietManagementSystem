@@ -1,0 +1,22 @@
+﻿using FluentValidation;
+using DietManagementSystemSHFT.API.CQRS.Commands.DietitianCommands;
+
+namespace DietManagementSystemSHFT.CQRS.Validators
+{
+    public class CreateDietitianCommandValidator : AbstractValidator<CreateDietitianCommand>
+    {
+        public CreateDietitianCommandValidator()
+        {
+            RuleFor(x => x.FullName)
+                .NotEmpty().WithMessage("Full name is required")
+                .MaximumLength(100).WithMessage("Full name must not exceed 100 characters");
+
+            RuleFor(x => x.Specialization)
+                .NotEmpty().WithMessage("Specialization is required")
+                .MaximumLength(100).WithMessage("Specialization must not exceed 100 characters");
+
+            RuleFor(x => x.UserId)
+                .NotEmpty().WithMessage("User ID is required");
+        }
+    }
+}
